@@ -1,2 +1,2 @@
-# CS326-WEB-PROJECT
+# Project Sprout
 pain
