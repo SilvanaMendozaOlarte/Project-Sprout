@@ -1,4 +1,40 @@
-/* Create a top navigation bar with a black background color  */
+section{
+  display: grid;
+  place-content: center;
+
+}
+body{
+ 
+  background-color: white;
+  margin: 0;
+  overscroll-behavior: block;
+}
+
+.page-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;;
+}
+
+.page-body-inner{
+  background-color: white;
+  width: 80vw;
+}
+
+header
+{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h2{
+
+  display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 .navbar {
     background-color: #333;
     overflow: hidden;
@@ -7,7 +43,6 @@
     align-items: center;
   }
   
-  /* Style the links inside the navigation bar */
   .navbar a {
     float: left;
     color: #f2f2f2;
@@ -17,11 +52,36 @@
     font-size: 17px;
   }
   
-  /* Change the color of links on hover */
   .navbar a:hover {
-    background-color: #ddd;
+    background-color: green;
     color: black;
   }
+
+  #team-container
+  {
+  margin: 20px auto;
+  width:420px;
+  height:420px;
+  background-color:green;
+  display:grid;
+  grid-template-columns: 200px 200px;
+  grid-row: auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  border-color: green;
+  border-style: solid;
+  border-width: 10px;
+  }
+  #member
+  {
+    background-color:white;
+    color:black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  
 
   
   
