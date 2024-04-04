@@ -17,7 +17,6 @@ body{
 }
 .wc-wrapper
 {
-    margin-right: 60px;
     float:right;
     height:5vw;
     width: 10vw;
@@ -32,3 +31,19 @@ body{
     justify-content: center;
     align-items: center;
   }
+
+
+a{
+    font-family: 'Times New Roman';
+    text-decoration: none;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    margin-left: 60px;
+    float:left;
+    height:5vw;
+    width: 10vw;
+    border-radius: 15px;
+    color:black;
+    background-color: green;
+}

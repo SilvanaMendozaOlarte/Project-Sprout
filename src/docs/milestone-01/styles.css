@@ -19,7 +19,7 @@ body{
 
 .page-body-inner{
   background-color: white;
-  width: 80vw;
+  width: 83.12vw;
 }
 
 header
@@ -53,8 +53,14 @@ h2{
   }
   
   .navbar a:hover {
-    background-color: green;
+    background-color: lightgreen !important;
     color: black;
+  }
+
+  .navbar a.side {
+    float: right;
+    background-color: green;
+    color: white;
   }
 
   #team-container
