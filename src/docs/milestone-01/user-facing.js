@@ -2,7 +2,7 @@ const doc = document.getElementById('temp-doc')
 const counter = document.getElementById('word-count')
 
 
-doc.value= 'Welcome to our first prototype. Feel free to type, you can view the word count at the bottom of the page. We will add more features later '
+doc.value= 'Welcome to our first prototype. Feel free to type, you can view the word count at the bottom of the page. We will add more features later. '
 
 function wordcount()
 {
