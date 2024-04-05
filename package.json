@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "milestone-01": "http-server -p 3000 -c-1 -o -s --cors"
+    "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s"
   },
   "repository": {
     "type": "git",
