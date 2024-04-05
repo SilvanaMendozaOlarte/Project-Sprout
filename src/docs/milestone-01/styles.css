@@ -19,7 +19,13 @@ body{
 
 .page-body-inner{
   background-color: white;
-  width: 83.12vw;
+  width: 90vw;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page-body-inner-inner{
+  width:85vw;
 }
 
 header
@@ -67,7 +73,7 @@ h2{
   {
   margin: 20px auto;
   width:420px;
-  height:420px;
+  height:600px;
   background-color:green;
   display:grid;
   grid-template-columns: 200px 200px;
@@ -78,15 +84,21 @@ h2{
   border-style: solid;
   border-width: 10px;
   }
-  #member
+  .member
   {
+    display: grid;
+    place-content: center;
     background-color:white;
     color:black;
-    display:flex;
-    align-items:center;
-    justify-content:center;
   }
-
+  h2{
+    color:green;
+  }
+  .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
 
   
