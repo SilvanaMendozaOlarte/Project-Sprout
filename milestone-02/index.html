@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Clubbernaut</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+</head>
+<body>
+
+    <!-- Navbar -->
+
+    <nav id="navbar">
+        <img id="logo" src="BOB!!!!.png">
+        <div class="tabs">
+            <button class="linkButton" id="tab-Pomodoro">Pomodoro</button>
+            <button class="linkButton" id="tab-Farm">Farm</button>
+            <button class="linkButton" id="tab-Projects">Projects</button>
+            <button class="linkButton" id="tab-Tasks">Tasks</button>
+        </div>
+        <button class="linkButton" id="tab-sign-in">Sign In</button>
+        <img id="avatar" height="43" width="43" style="display: none;">
+    </nav>
+
+    <!-- Navbar Tabs -->
+    
+    <div id="sign-in" class="page" style="display: block;">
+        <form>
+            <h1>Sign In</h1>
+            <label for="sign-in-email">Email:</label><br>
+            <input type="email" id="sign-in-email" required><br>
+            <label for="sign-in-password">Password:</label><br>
+            <input type="password" id="sign-in-password" required><br>
+            <input type="button" id="sign-in-button" value="Sign In">
+            <div id="sign-in-alert"></div>
+        </form>
+        <input type="button" id="sign-in-to-sign-up" value="Sign Up">
+    </div>
+
+    <div id="Pomodoro" class="page" style="display: none;">
+        <h1>Pomodoro</h1>
+        <p>This is the content of Pomodoro.</p>
+    </div>
+
+    <div id="Farm" class="page" style="display: none;">
+        <h1>Pomodoro</h1>
+        <p>This is the content of Pomodoro.</p>
+    </div>
+
+    <div id="Projects" class="page" style="display: none;">
+        <h1>Projects</h1>
+        <p>This is the content of Projects.</p>
+    </div>
+
+    <div id="Tasks" class="page" style="display: none;">
+        <h1>Projects</h1>
+        <p>This is the content of Tasks.</p>
+    </div>
+
+    <!-- Other Tabs -->
+
+    <div id="sign-up" class="page" style="display: none;">
+        <h1>Sign Up</h1>
+        <form>
+            <label for="sign-up-email">Email:</label><br>
+            <input type="email" id="sign-up-email" required><br>
+            <label for="sign-up-username">Username:</label><br>
+            <input type="text" id="sign-up-username" required><br>
+            <label for="sign-up-password">Password:</label><br>
+            <input type="password" id="sign-up-password" required><br>
+            <label for="sign-up-confirm-password">Confirm Password:</label><br>
+            <input type="password" id="sign-up-confirm-password" required><br>
+            <br>
+            <input type="button" id="sign-up-button" value="Sign Up">
+            <div id="sign-up-alert"></div>
+        </form>
+        <input type="button" id="sign-up-to-sign-in" value="Sign In">
+    </div>
+    <div id="user-settings" class="page" style="display: none;">
+        <h1>User Settings</h1>
+        <p>This is the content of User Settings.</p>
+    </div>
+    <div id="forgot-password" class="page" style="display: none;">
+        <h1>Forgot Password</h1>
+        <p>This is the content of Forgot Password.</p>
+    </div>
+
+    <div id="sign-up-successful" class="page" style="display: none;">
+        <p>You signed up!</p>
+    </div>
+    <div id="sign-in-successful" class="page" style="display: none;">
+        <p>You signed in!</p>
+    </div>
+
+    <!-- Imports page changing function -->
+
+    <script type="module">
+        import { changePage } from './page.js';
+        document.getElementById('tab-Pomodoro').addEventListener('click', () => changePage('Pomodoro'));
+        document.getElementById('tab-Farm').addEventListener('click', () => changePage('Farm'));
+        document.getElementById('tab-Projects').addEventListener('click', () => changePage('Projects'));
+        document.getElementById('tab-Tasks').addEventListener('click', () => changePage('Tasks'));
+        document.getElementById('tab-sign-in').addEventListener('click', () => changePage('sign-in'));
+        document.getElementById('sign-in-to-sign-up').addEventListener('click', () => changePage('sign-up'));
+        document.getElementById('sign-up-to-sign-in').addEventListener('click', () => changePage('sign-in'));
+    </script>
+</body>
+</html>
