@@ -69,7 +69,25 @@
 
     <div id="projects" class="page" style="display: none;">
         <h1>Projects</h1>
-        <p>This is the content of Projects.</p>
+        <p>This is the content of Projects.</p><br>
+        <div class="collapsibles">
+            <button type="button" class="collapsible">Miscellaneous Tasks</button>
+            <div class="content">
+                <menu>
+                    <li>Task 1</li>
+                    <li>Task 2</li>
+                    <li>Task 3</li>
+                </menu>
+            </div>
+            <button type="button" class="collapsible">Project 1</i></button>
+            <div class="content">
+                <menu>
+                    <li>Task 1</li>
+                    <li>Task 2</li>
+                    <li>Task 3</li>
+                </menu>
+            </div>
+        </div>
     </div>
 
     <!-- Other Tabs -->
@@ -110,6 +128,22 @@
     </div>
 
     <!-- Normal JavaScript -->
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
 
     <!-- Module JavaScript -->
 
