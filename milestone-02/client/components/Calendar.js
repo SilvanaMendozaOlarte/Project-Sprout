@@ -2,16 +2,15 @@ const buildCalendar = () => {
     // > placeholder, should be dynamic
     numRows = 8;
     days_of_week = [
-    "Mon",
-    "Tue",
-    "Wed",
-    "Thu",
-    "Fri",
-    "Sat",
-    "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
     ];
     calendar = document.getElementById("calendar");
-  
     for (let i = 0; i < 7; i++){
         for (let j = 0; j < numRows; j++){
 
@@ -32,11 +31,10 @@ const buildCalendar = () => {
 
             day_item.classList.add("day_item");
             calendar.appendChild(day_item);  
-    
-            //! adding click function to every day
-            //square.addEventListener("click", onclick(i,j));
-
+            // !adding click function to every day
+            // square.addEventListener("click", onclick(i,j));
         }
     }
 }
+
 buildCalendar();
