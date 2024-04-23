@@ -44,8 +44,7 @@
     </div>
 
     <div id="farm" class="page" style="display: none;">
-        <h1>Farm</h1>
-        <p>This is the content of Farm.</p>
+        
     </div>
 
     <div id="shop" class="page" style="display: none;">
@@ -95,11 +94,13 @@
         <p>You signed in!</p>
     </div>
 
-    <!-- Imports page changing function -->
-
+    <!-- JavaScript -->
+    
     <script type="module">
+        // Imports page changing function
         import ChangePage from './changePage.js';
         const pageChanger = new ChangePage();
+        // Setting up event listeners to change pages
         document.getElementById('tab_pomodoro').addEventListener('click', () => pageChanger.changePage('pomodoro'));
         document.getElementById('tab_farm').addEventListener('click', () => pageChanger.changePage('farm'));
         document.getElementById('tab_shop').addEventListener('click', () => pageChanger.changePage('shop'));
