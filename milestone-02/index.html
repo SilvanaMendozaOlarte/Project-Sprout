@@ -14,17 +14,17 @@
     <nav id="navbar">
         <img id="logo" src="BOB!!!!.png">
         <div class="tabs">
-            <button class="linkButton" id="tab_pomodoro">Pomodoro</button>
-            <button class="linkButton" id="tab_farm">Farm</button>
-            <button class="linkButton" id="tab_shop">Tasks</button>
-            <button class="linkButton" id="tab_projects">Projects</button>
+            <button class="tab" id="tab_pomodoro">Pomodoro</button>
+            <button class="tab" id="tab_farm">Farm</button>
+            <button class="tab" id="tab_shop">Shop</button>
+            <button class="tab" id="tab_projects">Projects</button>
         </div>
-        <button class="linkButton" id="tab_sign_in">Sign In</button>
+        <button class="tab" id="tab_sign_in">Sign In</button>
         <img id="avatar" height="43" width="43" style="display: none;">
     </nav>
 
     <!-- Navbar Tabs -->
-    
+
     <div id="sign_in" class="page" style="display: block;">
         <form>
             <h1>Sign In</h1>
@@ -37,6 +37,8 @@
         </form>
         <input type="button" id="sign_in_to_sign_up" value="Sign Up">
     </div>
+
+    <!-- TODO - Silvana -->
 
     <div id="pomodoro" class="page" style="display: none;">
         <h1>Pomodoro</h1>
@@ -56,15 +58,27 @@
         </div>
     </div>
 
+    <!-- TODO - Jacob -->
+
     <div id="farm" class="page" style="display: none;">
-        <h1>Farm</h1>
-        <p>This is the content of Farm.</p>
+        
     </div>
+
+    <!-- TODO - Donald -->
 
     <div id="shop" class="page" style="display: none;">
         <h1>Shop</h1>
-        <p>This is the content of Shop.</p>
+        <!-- Shop Navbar Tabs -->
+        <nav>
+            <button class="tab_shop_category" id="tab_shop_category_house">House</button>
+            <button class="tab_shop_category" id="tab_shop_category_garden">Garden</button>
+            <button class="tab_shop_category" id="tab_shop_category_plants">Plants</button>
+            <button class="tab_shop_category" id="tab_shop_category_avatar">Avatar</button>
+        </nav>
+        <div id="shop_category_house" class="shop_category"></div>
     </div>
+
+    <!-- TODO - Chris -->
 
     <div id="projects" class="page" style="display: none;">
         <h1>Projects</h1>
@@ -108,11 +122,18 @@
         <p>You signed in!</p>
     </div>
 
-    <!-- Imports page changing function -->
+    <!-- Normal JavaScript -->
+
+    <!-- Module JavaScript -->
 
     <script type="module">
+        // Imports page and shop category changing functions
         import ChangePage from './changePage.js';
+        import ChangeShopCategory from './changeShopCategory.js';
+        // Instantiates page and shop category changing objects
         const pageChanger = new ChangePage();
+        const shopCategoryChanger = new ChangeShopCategory();
+        // Setting up event listeners to change pages
         document.getElementById('tab_pomodoro').addEventListener('click', () => pageChanger.changePage('pomodoro'));
         document.getElementById('tab_farm').addEventListener('click', () => pageChanger.changePage('farm'));
         document.getElementById('tab_shop').addEventListener('click', () => pageChanger.changePage('shop'));
@@ -122,6 +143,7 @@
         document.getElementById('sign_up_button').addEventListener('click', () => pageChanger.changePage('sign_up_successful'));
         document.getElementById('sign_in_to_sign_up').addEventListener('click', () => pageChanger.changePage('sign_up'));
         document.getElementById('sign_up_to_sign_in').addEventListener('click', () => pageChanger.changePage('sign_in'));
+        // Setting up event listeners to change shop categories
     </script>
     <script src="Calendar.js"></script>
 </body>
