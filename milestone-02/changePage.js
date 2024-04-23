@@ -1,9 +1,18 @@
-let prevPage = "sign-in";
+class ChangePage {
+    ChangePage = null
+    constructor() {
+        if (this.ChangePage === null) {
+            this.prevPage = "sign_in"
+            ChangePage.ChangePage = this
+        }
+        return ChangePage.ChangePage
+    }
 
-function changePage(page) {
-    document.getElementById(prevPage).style.display = 'none';
-    document.getElementById(page).style.display = 'block';
-    prevPage = page;
+    changePage(page) {
+        document.getElementById(this.prevPage).style.display = 'none'
+        document.getElementById(page).style.display = 'block'
+        this.prevPage = page
+    }
 }
 
-export default changePage
+export default ChangePage

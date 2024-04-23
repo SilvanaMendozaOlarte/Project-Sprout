@@ -3,15 +3,6 @@
     padding: 0;
 }
 
-#navbar {
-    background-color: #251e68;
-    height:"0px";
-    background-color:"light-blue";
-    text-align: left;
-    font-family: 'Work Sans', sans-serif;
-    font-weight:500;
-}
-
 .linkButton {
     border: none;
     color: white;
@@ -39,7 +30,6 @@
 
 #logo {
     float:left;
-    margin-top: 4px;
     margin-left: 50px;
     margin-right: 25px;
 }
@@ -47,11 +37,12 @@
 #navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 #logo {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
 }
 
 #profilePic {
