@@ -65,19 +65,20 @@
 #calendar{
     background-color: #C9E5C4;
 }
+
 .calendar {
     display: grid;
-    grid-template-columns: repeat(7, 50px);
-    grid-template-rows: repeat(6, 50px);
+    grid-template-columns: repeat(7, 40px);
+    grid-template-rows: repeat(6, 40px);
     position: absolute;
-    top: 70%; left: 20%;
+    top: 75%; left: 12%;
     transform: translate(-50%,-50%);
 }
 
 .calendar_day {
     text-align: center;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     grid-gap: 0;
     border: none;
 }
