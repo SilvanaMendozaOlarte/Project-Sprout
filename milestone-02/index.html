@@ -90,7 +90,7 @@
                 <input type="text" id="taskName"><br>
                 <p>Add Task to Which Project:</p>
                 <select id="projectList">
-                    <option value="misc" id="listmisc">Miscellaneous</option>
+                    <option value="misc" id="projlistmisc">Miscellaneous</option>
                 </select>
                 <div class="btn-group">
                     <button id="closeTaskPopup">Close</button>
@@ -200,7 +200,7 @@
             const projRmList = document.getElementById("projectRemoveList");
             const newProjListOption = document.createElement("option");
             newProjListOption.setAttribute("value", projName.value);
-            newProjListOption.setAttribute("id", "list"+projName.value);
+            newProjListOption.setAttribute("id", "projlist"+projName.value);
             newProjListOption.innerHTML = projName.value;
             const newProjRmListOption = document.createElement("option");
             newProjRmListOption.setAttribute("value", projName.value);
@@ -216,7 +216,7 @@
             let tskName = document.getElementById("taskName");
             const projMenu = document.getElementById("menu"+projectList.value);
             const newListElement = document.createElement("li");
-            newListElement.setAttribute("id", "list"+tskName.value);
+            newListElement.setAttribute("id", projectList.value+"list"+tskName.value);
             newListElement.innerHTML = `<input type="checkbox"> `+ tskName.value;
             projMenu.appendChild(newListElement);
         }
@@ -229,7 +229,7 @@
             removeButton.remove();
             // Removes the deleted project from the project lists in the "Add Task"
             // and "Delete Project" popups
-            const projListOption = document.getElementById("list"+projectRemoveList.value);
+            const projListOption = document.getElementById("projlist"+projectRemoveList.value);
             const projRmListOption = document.getElementById("rmList"+projectRemoveList.value);
             projListOption.remove();
             projRmListOption.remove();
@@ -265,7 +265,7 @@
             myAddProjectPopup.classList.remove("show");
             let projName = document.getElementById("projectName");
             let checkProjectName = projName.value.trim();
-            if (checkProjectName.length != 0) {
+            if (checkProjectName.length != 0 && !document.getElementById("button"+projName.value)) {
                 addProject();
             }
             projName.value = "";
@@ -276,7 +276,8 @@
             myTaskPopup.classList.remove("show");
             let tskName = document.getElementById("taskName");
             let checkTaskName = tskName.value.trim();
-            if (checkTaskName.length != 0) {
+            let menu = document.getElementById("menu"+projectList.value);
+            if (checkTaskName.length != 0 && !document.getElementById(projectList.value+"list"+tskName.value)) {
                 addTask();
             }
             tskName.value = "";
