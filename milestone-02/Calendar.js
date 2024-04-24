@@ -19,7 +19,6 @@ const buildCalendar = () => {
             let day_item = document.createElement("div");
             let text = document.createTextNode("")
 
-            // > creates a th if on first row, else creates a td
             if(i < 1){
                 day_item = document.createElement("div");
                 text = document.createTextNode(days_of_week[j]);
@@ -36,7 +35,6 @@ const buildCalendar = () => {
     
             //! adding click function to every day
             //square.addEventListener("click", onclick(i,j));
-
         }
     }
 }
