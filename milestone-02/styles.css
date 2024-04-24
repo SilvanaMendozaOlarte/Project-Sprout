@@ -82,3 +82,8 @@
     grid-gap: 0;
     border: none;
 }
+
+.calendar_week_header {
+    text-align: center;
+    background-color: #79AD70;
+}

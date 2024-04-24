@@ -42,22 +42,25 @@ const buildCalendar = () => {
             let day_item = document.createElement("div");
             let text = document.createTextNode("")
 
-            // > day of week label
+            // > day of week label (mon-sun)
             if(i < 1){
                 day_item = document.createElement("div");
                 text = document.createTextNode(days_of_week[j]);
+                day_item.classList.add("calendar_week_header");
             }
+            // > dates numbers (1,2,...,31)
             else if(day_number <= amount_days_in_month){
                 day_item = document.createElement("div");
                 text = document.createTextNode(day_number.toString());
+                day_item.classList.add("calendar_day");
             }
 
             day_item.appendChild(text);
-            day_item.classList.add("calendar_day");
+            
             calendar.appendChild(day_item);  
     
             day_number++;
-            //! adding click function to every day
+            //TODO: adding click function to every day
         }
     }
 }
