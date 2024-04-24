@@ -13,24 +13,25 @@ const buildCalendar = () => {
     calendar = document.getElementById("calendar");
   
     for (let i = 0; i < 7; i++){
-        for (let j = 0; j < numRows; j++){
+        for (let j = 0; j < 7; j++){
 
             // ? How do i declare w/o initializing?
-            const day_item = document.createElement("div");
-            const text = document.createTextNode("")
+            let day_item = document.createElement("div");
+            let text = document.createTextNode("")
 
             // > creates a th if on first row, else creates a td
-            if(j > 1){
+            if(i < 1){
                 day_item = document.createElement("div");
-                text = document.createTextNode(days_of_week[i]);
+                text = document.createTextNode(days_of_week[j]);
             }
             else{
                 day_item = document.createElement("div");
                 // > placeholder, will display day number, will do l8r
-                text = document.createTextNode(0);
+                text = document.createTextNode("0");
             }
 
-            day_item.classList.add("day_item");
+            day_item.appendChild(text);
+            day_item.classList.add("calendar_day");
             calendar.appendChild(day_item);  
     
             //! adding click function to every day
