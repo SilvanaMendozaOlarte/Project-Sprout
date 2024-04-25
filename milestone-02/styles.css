@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-.navbar {
+#navbar {
     background-color: #EC2D01;
     display: flex;
     justify-content: space-between;
