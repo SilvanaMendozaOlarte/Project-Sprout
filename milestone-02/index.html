@@ -13,9 +13,9 @@
 
     <!-- Navbar -->
 
-    <nav id="navbar">
+    <nav id="main_navbar" class="navbar">
         <img id="logo" src="BOB!!!!.png">
-        <div class="tabs">
+        <div id="main_tabs" class="tabs">
             <button class="tab" id="tab_pomodoro">Pomodoro</button>
             <button class="tab" id="tab_farm">Farm</button>
             <button class="tab" id="tab_shop">Shop</button>
@@ -80,13 +80,35 @@
     <div id="shop" class="page" style="display: none;">
         <h1>Shop</h1>
         <!-- Shop Navbar Tabs -->
-        <nav>
-            <button class="tab_shop_category" id="tab_shop_category_house">House</button>
-            <button class="tab_shop_category" id="tab_shop_category_garden">Garden</button>
-            <button class="tab_shop_category" id="tab_shop_category_plants">Plants</button>
-            <button class="tab_shop_category" id="tab_shop_category_avatar">Avatar</button>
+        <nav id="tab_shop_categories" class="navbar">
+            <div id="tab_shop_categories_left" class="tabs">
+                <button class="tab" id="tab_shop_category_house">House</button>
+                <button class="tab" id="tab_shop_category_garden">Garden</button>
+                <button class="tab" id="tab_shop_category_plants">Plants</button>
+                <button class="tab" id="tab_shop_category_avatar">Avatar</button>
+            </div>
+            <div id="tab_shop_categories_right">
+                <button class="tab" id="tab_shop_category_purchased_items">Purchased</button>
+                <button class="tab" id="tab_shop_category_choose_avatar">Choose Avatar</button>
+            </div>
         </nav>
-        <div id="shop_category_house" class="shop_category"></div>
+        <div id="shop_category_house" class="shop_category" style="display: block;">
+        </div>
+        <div id="shop_category_garden" class="shop_category" style="display: none;">
+
+        </div>
+        <div id="shop_category_plants" class="shop_category" style="display: none;">
+
+        </div>
+        <div id="shop_category_avatar" class="shop_category" style="display: none;">
+
+        </div>
+        <div id="shop_category_garden_purchased_items" class="shop_category" style="display: none;">
+
+        </div>
+        <div id="shop_category_garden_choose_avatar" class="shop_category" style="display: none;">
+
+        </div>
     </div>
 
     <!-- TODO - Chris -->
@@ -181,14 +203,28 @@
         // Setting up event listeners to change pages
         document.getElementById('tab_pomodoro').addEventListener('click', () => pageChanger.changePage('pomodoro'));
         document.getElementById('tab_farm').addEventListener('click', () => pageChanger.changePage('farm'));
-        document.getElementById('tab_shop').addEventListener('click', () => pageChanger.changePage('shop'));
+        document.getElementById('tab_shop').addEventListener('click', () => {
+            pageChanger.changePage('shop')
+            shopCategoryChanger.changeShopCategory('shop_category_house');
+        });
         document.getElementById('tab_projects').addEventListener('click', () => pageChanger.changePage('projects'));
         document.getElementById('tab_sign_in').addEventListener('click', () => pageChanger.changePage('sign_in'));
         document.getElementById('sign_in_button').addEventListener('click', () => pageChanger.changePage('sign_in_successful'));
         document.getElementById('sign_up_button').addEventListener('click', () => pageChanger.changePage('sign_up_successful'));
         document.getElementById('sign_in_to_sign_up').addEventListener('click', () => pageChanger.changePage('sign_up'));
         document.getElementById('sign_up_to_sign_in').addEventListener('click', () => pageChanger.changePage('sign_in'));
-        // Setting up event listeners to change shop categories
+        // Loading JSON data
+        await fetch('shop.json')
+            .then(response => response.json())
+            .then(data => {
+                // Setting up event listeners to change shop categories
+                document.getElementById('tab_shop_category_house').addEventListener('click', () => shopCategoryChanger.changeShopCategory('shop_category_house', data));
+                document.getElementById('tab_shop_category_garden').addEventListener('click', () => shopCategoryChanger.changeShopCategory('shop_category_garden', data));
+                document.getElementById('tab_shop_category_plants').addEventListener('click', () => shopCategoryChanger.changeShopCategory('shop_category_plants', data));
+                document.getElementById('tab_shop_category_avatar').addEventListener('click', () => shopCategoryChanger.changeShopCategory('shop_category_avatar', data));
+                document.getElementById('tab_shop_category_purchased_items').addEventListener('click', () => shopCategoryChanger.changeShopCategory('shop_category_purchased_items', data));
+                document.getElementById('tab_shop_category_choose_avatar').addEventListener('click', () => shopCategoryChanger.changeShopCategory('shop_category_choose_avatar', data));
+            });
     </script>
     <script src="Calendar.js"></script>
     <script type="module" src="Streaks.js"></script>
