@@ -92,6 +92,8 @@
                 <select id="projectList">
                     <option value="misc" id="projlistmisc">Miscellaneous</option>
                 </select>
+                <p>Due Date:</p>
+                <input type="date" id="dueDate">
                 <div class="btn-group">
                     <button id="closeTaskPopup">Close</button>
                     <button id="createTask">Create Task</button>
@@ -220,7 +222,7 @@
             collapsibleWrapper.appendChild(newButton);
             collapsibleWrapper.appendChild(newDiv);
             // The newly created project is then added to the lists of created
-            // projects in the "Add Task" and "Delete Project" popups.
+            // projects in the "Add Task", "Delete Project", and "Delete Task" popups.
             const projList = document.getElementById("projectList");
             const projRmList = document.getElementById("projectRemoveList");
             const taskRmProjectList = document.getElementById("taskRmProjectList");
@@ -249,9 +251,9 @@
             const newListElement = document.createElement("li");
             newListElement.setAttribute("id", projectList.value+"list"+tskName.value);
             newListElement.setAttribute("value", tskName.value);
-            newListElement.innerHTML = `<input type="checkbox"> `+ tskName.value;
+            let taskDueDate = document.getElementById("dueDate");
+            newListElement.innerHTML = `<input type="checkbox"> `+ tskName.value + " (Due Date: " + taskDueDate.value + ")";
             projMenu.appendChild(newListElement);
-            const taskRmTaskList = document.getElementById("taskRmTaskList");
             const newTaskRmTaskListOption = document.createElement("option");
             newTaskRmTaskListOption.setAttribute("value", tskName.value);
             newTaskRmTaskListOption.setAttribute("id", "taskrmtasklist"+tskName.value);
@@ -268,8 +270,8 @@
             const removeDiv = document.getElementById("div"+projectRemoveList.value);
             removeDiv.remove();
             removeButton.remove();
-            // Removes the deleted project from the project lists in the "Add Task"
-            // and "Delete Project" popups
+            // Removes the deleted project from the project lists in the "Add Task",
+            // "Delete Project", and "Delete Task" popups
             const projListOption = document.getElementById("projlist"+projectRemoveList.value);
             const projRmListOption = document.getElementById("rmList"+projectRemoveList.value);
             const taskRmListOption = document.getElementById("taskrmprojlist"+projectRemoveList.value);
@@ -288,6 +290,7 @@
         }
 
         function deleteTask() {
+            // Deletes the chosen task and removes it from the "Delete Task" popup
             const taskToRemove = document.getElementById(taskRmProjectList.value+"list"+taskRmTaskList.value);
             const rmFromTaskRmList = document.getElementById("taskrmtasklist"+taskRmTaskList.value);
             taskToRemove.remove();
@@ -306,36 +309,52 @@
         removeProjectButton.addEventListener("click", function () { 
             myRmProjectPopup.classList.add("show");
         });
+        // Opens the first "Delete Task" popup where you choose a project to remove
+        // a task from
         removeTaskButton.addEventListener("click", function () { 
             myRmTaskProjectPopup.classList.add("show");
         });
         // Closes the "Create New Project" popup
         closeAddProjectPopup.addEventListener("click", function () {
             myAddProjectPopup.classList.remove("show");
+            let projName = document.getElementById("projectName");
+            projName.value = "";
         });
         // Closes the "Create New Task" popup
         closeTaskPopup.addEventListener("click", function () {
             myTaskPopup.classList.remove("show");
+            let tskName = document.getElementById("taskName");
+            tskName.value = "";
         });
         // Closes the "Delete Project" popup
         closeRmProjectPopup.addEventListener("click", function () {
             myRmProjectPopup.classList.remove("show");
         });
+        // Closes the first "Delete Task" popup
         closeRmTaskProjectPopup.addEventListener("click", function () {
             myRmTaskProjectPopup.classList.remove("show");
         });
+        // Closes the second "Delete Task" popup and opens up the first again
         backRmTaskTaskPopup.addEventListener("click", function () {
             myRmTaskTaskPopup.classList.remove("show");
             myRmTaskProjectPopup.classList.add("show");
         });
+        // Closes the first "Delete Task" popup, alters the display of "taskRmTaskList"
+        // so that only tasks in the chosen project will appear in the list, then
+        // opens the second "Delete Task" popup with the list of tasks in that project
         chooseProject.addEventListener("click", function() {
             myRmTaskProjectPopup.classList.remove("show");
             const selector = document.getElementById("taskRmTaskList");
             let trimTaskRmProjectList = taskRmProjectList.value.replace(/\s/g, '');
             var children = selector.children;
+            let selected = false;
             for (let i = 0; i < children.length; i++) {
                 const child = children[i];
                 if (child.classList.contains("taskrmproj"+trimTaskRmProjectList)) {
+                    if (selected === false) {
+                        selector.selectedIndex = i;
+                        selected = true;
+                    }
                     child.setAttribute("style", "");
                 }
                 else {
@@ -362,7 +381,8 @@
             let tskName = document.getElementById("taskName");
             let checkTaskName = tskName.value.trim();
             let menu = document.getElementById("menu"+projectList.value);
-            if (checkTaskName.length != 0 && !document.getElementById(projectList.value+"list"+tskName.value)) {
+            let taskDueDate = document.getElementById("dueDate");
+            if (checkTaskName.length != 0 && !document.getElementById(projectList.value+"list"+tskName.value) && taskDueDate.value != "") {
                 addTask();
             }
             tskName.value = "";
@@ -380,9 +400,13 @@
         window.addEventListener("click", function (event) {
             if (event.target == myAddProjectPopup) {
                 myAddProjectPopup.classList.remove("show");
+                let projName = document.getElementById("projectName");
+                projName.value = "";
             }
             if (event.target == myTaskPopup) {
                 myTaskPopup.classList.remove("show");
+                let tskName = document.getElementById("taskName");
+                tskName.value = "";
             }
             if (event.target == myRmProjectPopup) {
                 myRmProjectPopup.classList.remove("show");
