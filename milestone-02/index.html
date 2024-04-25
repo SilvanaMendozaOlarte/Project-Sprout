@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="styles.css">
     <title>Clubbernaut</title>
     <link rel="icon" type="image/x-icon" href="BOB!!!!.png">
+    <link rel="stylesheet" href="ui-classes.css">
 </head>
 <body>
 
@@ -51,20 +52,20 @@
 
     <div id="farm" class="page" style="display: none;">
        
-        <h1>Farm</h1>
+        
         <div id = 'farm-demo'>
+            
             <div id="farm-inputs">
-        <button id="submit-tomatoes">Sumbit</button>
+                <h1>Farm</h1>
+        <button id="submit-tomatoes" class="pom-button">Submit</button>
         <label for="goal">
            goal 
         </label>
         <input type="text" name="goal" id="daily-goal">
-        <label for="tomatoes">
-            tomatoes
-
-        </label>
-        <input type="text" name="tomatoes" id="tomatoes">
-        </div>
+        <div class="input-group">
+            <input required="" type="text" name="text" autocomplete="off" class="input" id="tomatoes">
+            <label class="user-label">Tomatoes</label>
+          </div>
        
         <div id="farm-view-container">
         <div id="farm-view">

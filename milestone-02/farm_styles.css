@@ -68,7 +68,13 @@
 }
 #farm-inputs
 {
+    height:100px;
+    width:400px;
+    background-size: 400px;
+    background-image: url(farm_ui_background.png);
     margin-bottom: 50px;
+    max-width: fit-content;
+  margin-inline: auto;
 }
 .goal-plot
 {
@@ -108,4 +114,9 @@
     background-image: url(House_\(tier_1\).png);
     background-size: 80px;
     align-self: center;
+}
+#farm-ui-container{
+    display: flex;
+  justify-content: center;
+  align-items: center;
 }
