@@ -62,28 +62,41 @@
     margin-left: 60px;
 }
 
-#calendar{
+/* TODO dashboard  */
+.left_boxes {
+    display: grid;
     background-color: #C9E5C4;
+    height: 40%;
+    width: 40%;
+    left: 23%;
+    transform: translate(-50%,-50%);
+    position: absolute;
 }
 
-.calendar {
+#calendar_container{
+    top: 75%; 
+}
+
+#calendar {
     display: grid;
-    grid-template-columns: repeat(7, 40px);
-    grid-template-rows: repeat(6, 40px);
-    position: absolute;
-    top: 75%; left: 12%;
-    transform: translate(-50%,-50%);
+    grid-template-columns: repeat(7, auto);
+    grid-template-rows: repeat(6, auto);
+}
+
+.calendar_item {
+    display: flex;
+    place-items: center;
+    place-content: center;
 }
 
 .calendar_day {
-    text-align: center;
-    width: 30px;
-    height: 30px;
-    grid-gap: 0;
-    border: none;
+    background-color: none;
 }
 
 .calendar_week_header {
-    text-align: center;
     background-color: #79AD70;
+}
+
+#streaks_container {
+    top: 30%;
 }
