@@ -13,7 +13,7 @@ function render()
 
     const num_tom = Number(tom.value)
     const num_plots = Number(plots.value)
-    if(typeof(num_tom) !== 'number' || typeof(num_plots) !== 'number')
+    if(isNaN(num_tom)  || isNaN(num_plots))
     {
         alert('both inputs must be numbers')
         return;
