@@ -48,147 +48,101 @@
     "shop_items": [
         {
             "id": 0,
-            "name": "item1",
+            "name": "Great House",
             "category": "house",
-            "price": 100
+            "image_path": "./images/house1.png",
+            "price": 300
         },
         {
             "id": 1,
-            "name": "item2",
+            "name": "Excellent House",
             "category": "house",
+            "image_path": "./images/house2.png",
+            "price": 1000
+        },
+        {
+            "id": 2,
+            "name": "Castle",
+            "category": "house",
+            "image_path": "./images/castle0.png",
+            "price": 5000
+        },
+        {
+            "id": 0,
+            "name": "Barn",
+            "category": "garden",
+            "image_path": "./images/barn0.png",
+            "price": 500
+        },
+        {
+            "id": 1,
+            "name": "Coop",
+            "category": "garden",
+            "image_path": "./images/coop0.png",
+            "price": 300
+        },
+        {
+            "id": 2,
+            "name": "Silo",
+            "category": "garden",
+            "image_path": "./images/silo0.png",
+            "price": 800
+        },
+        {
+            "id": 0,
+            "name": "Blueberry",
+            "category": "plants",
+            "image_path": "./images/blueberry.png",
+            "price": 800
+        },
+        {
+            "id": 1,
+            "name": "Melon",
+            "category": "plants",
+            "image_path": "./images/melon.png",
             "price": 200
         },
         {
             "id": 2,
-            "name": "item3",
-            "category": "house",
-            "price": 300
+            "name": "Corn",
+            "category": "plants",
+            "image_path": "./images/corn.png",
+            "price": 200
         },
         {
             "id": 3,
-            "name": "item4",
-            "category": "house",
-            "price": 400
-        },
-        {
-            "id": 4,
-            "name": "item5",
-            "category": "house",
-            "price": 500
-        },
-        {
-            "id": 5,
-            "name": "item6",
-            "category": "house",
-            "price": 600
-        },
-        {
-            "id": 6,
-            "name": "item1",
-            "category": "garden",
-            "price": 100
-        },
-        {
-            "id": 7,
-            "name": "item2",
-            "category": "garden",
+            "name": "Cabbage",
+            "category": "plants",
+            "image_path": "./images/cabbage.png",
             "price": 200
         },
         {
-            "id": 8,
-            "name": "item3",
-            "category": "garden",
-            "price": 300
-        },
-        {
-            "id": 9,
-            "name": "item4",
-            "category": "garden",
-            "price": 400
-        },
-        {
-            "id": 10,
-            "name": "item5",
-            "category": "garden",
-            "price": 500
-        },
-        {
-            "id": 11,
-            "name": "item6",
-            "category": "garden",
-            "price": 600
-        },
-        {
-            "id": 12,
-            "name": "item1",
-            "category": "plants",
-            "price": 100
-        },
-        {
-            "id": 13,
-            "name": "item2",
-            "category": "plants",
-            "price": 200
-        },
-        {
-            "id": 14,
-            "name": "item3",
-            "category": "plants",
-            "price": 300
-        },
-        {
-            "id": 15,
-            "name": "item4",
-            "category": "plants",
-            "price": 400
-        },
-        {
-            "id": 16,
-            "name": "item5",
-            "category": "plants",
-            "price": 500
-        },
-        {
-            "id": 17,
-            "name": "item6",
-            "category": "plants",
-            "price": 600
-        },
-        {
-            "id": 18,
-            "name": "item1",
+            "id": 0,
+            "name": "Waxward",
             "category": "avatar",
-            "price": 100
+            "image_path": "./images/wax_squidward.png",
+            "price": 1000
         },
         {
-            "id": 19,
-            "name": "item2",
+            "id": 1,
+            "name": "Wingward",
             "category": "avatar",
-            "price": 200
+            "image_path": "./images/wing_squidward.png",
+            "price": 1000
         },
         {
-            "id": 20,
-            "name": "item3",
+            "id": 1,
+            "name": "Bold and Brash",
             "category": "avatar",
-            "price": 300
+            "image_path": "./images/bold_and_brash.png",
+            "price": 100000
         },
         {
-            "id": 21,
-            "name": "item4",
+            "id": 3,
+            "name": "Squidward",
             "category": "avatar",
-            "price": 400
-        },
-        {
-            "id": 22,
-            "name": "item5",
-            "category": "avatar",
-            "price": 500
-        },
-        {
-            "id": 23,
-            "name": "item6",
-            "category": "avatar",
-            "price": 600
+            "image_path": "./images/real_squidward.png",
+            "price": 10000000000000
         }
     ]
 }

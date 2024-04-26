@@ -155,17 +155,16 @@
     width: 40%;
     padding: 10px 24px; 
     cursor: pointer;
-  }
+}
   
-  .btn-group:after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-  
-  .btn-group button:hover {
-    background-color: gray;
-  }
+.btn-group:after {
+content: "";
+clear: both;
+display: table;
+}
+
+.btn-group button:hover {
+background-color: gray;
 }
 
 /* TODO dashboard  */
@@ -205,4 +204,14 @@
 
 #streaks_container {
     top: 30%;
+}
+
+.shop_item {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.shop_item_category {
+    flex: 1;
 }

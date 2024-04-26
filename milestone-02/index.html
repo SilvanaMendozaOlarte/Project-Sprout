@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Clubbernaut</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="BOB!!!!.png">
+    <link rel="stylesheet" href="ui-classes.css">
 </head>
 <body>
 
@@ -48,8 +50,28 @@
     </div>
 
     <!-- TODO - Jacob -->
+    <script type = 'module' src="farm.js"></script>
+    <link rel="stylesheet" href="farm_styles.css">
 
     <div id="farm" class="page" style="display: none;">
+       
+        
+        <div id = 'farm-demo'>
+            
+            <div id="farm-inputs">
+                <h1 class="center">Farm</h1>
+        <div class="center" style="margin: 10px;">
+        <input class="input" placeholder="GOAL" id="daily-goal">
+        <input class="input" placeholder="TOMATOES" id="tomatoes">
+        </div>
+        <button id="submit-tomatoes" class="pom-button center-stupid-button">Submit</button>
+            </div>
+        <div id="farm-view-container">
+        <div id="farm-view">
+
+        </div>
+        </div>
+        </div>
         
     </div>
 
@@ -73,19 +95,14 @@
         <div id="shop_category_house" class="shop_category" style="display: block;">
         </div>
         <div id="shop_category_garden" class="shop_category" style="display: none;">
-
         </div>
         <div id="shop_category_plants" class="shop_category" style="display: none;">
-
         </div>
         <div id="shop_category_avatar" class="shop_category" style="display: none;">
-
         </div>
         <div id="shop_category_garden_purchased_items" class="shop_category" style="display: none;">
-
         </div>
         <div id="shop_category_garden_choose_avatar" class="shop_category" style="display: none;">
-
         </div>
     </div>
 
@@ -354,10 +371,6 @@
         // Setting up event listeners to change pages
         document.getElementById('tab_pomodoro').addEventListener('click', () => pageChanger.changePage('pomodoro'));
         document.getElementById('tab_farm').addEventListener('click', () => pageChanger.changePage('farm'));
-        document.getElementById('tab_shop').addEventListener('click', () => {
-            pageChanger.changePage('shop')
-            shopCategoryChanger.changeShopCategory('shop_category_house');
-        });
         document.getElementById('tab_projects').addEventListener('click', () => pageChanger.changePage('projects'));
         document.getElementById('tab_sign_in').addEventListener('click', () => pageChanger.changePage('sign_in'));
         document.getElementById('sign_in_button').addEventListener('click', () => pageChanger.changePage('sign_in_successful'));
@@ -365,7 +378,7 @@
         document.getElementById('sign_in_to_sign_up').addEventListener('click', () => pageChanger.changePage('sign_up'));
         document.getElementById('sign_up_to_sign_in').addEventListener('click', () => pageChanger.changePage('sign_in'));
         // Loading JSON data
-        await fetch('shop.json')
+        await fetch('./fakedata.json')
             .then(response => response.json())
             .then(data => {
                 // Setting up event listeners to change shop categories
@@ -375,6 +388,10 @@
                 document.getElementById('tab_shop_category_avatar').addEventListener('click', () => shopCategoryChanger.changeShopCategory('shop_category_avatar', data));
                 document.getElementById('tab_shop_category_purchased_items').addEventListener('click', () => shopCategoryChanger.changeShopCategory('shop_category_purchased_items', data));
                 document.getElementById('tab_shop_category_choose_avatar').addEventListener('click', () => shopCategoryChanger.changeShopCategory('shop_category_choose_avatar', data));
+                document.getElementById('tab_shop').addEventListener('click', () => {
+                    pageChanger.changePage('shop')
+                    shopCategoryChanger.changeShopCategory('shop_category_house', data);
+                });
             });
     </script>
     <script src="Calendar.js"></script>
