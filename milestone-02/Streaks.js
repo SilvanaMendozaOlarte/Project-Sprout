@@ -60,18 +60,74 @@ function getDurationByDay(date){
             duration+= getTotalDurationOfTask(p.taskId);
         }
     });
-    // id
-    
+    return duration;    
 }
+
+days_of_week = [
+    {
+        day_of_week: "Mon",
+        Date: "2019-01-01T00:00:00", // ? TODO how the heck do I work with time in js?
+        Duration : getDurationByDay("2019-01-01T00:00:00")
+        // Duration : getDurationByDay(days_of_week[0].Date) // TODO get date
+    },
+    {
+        day_of_week: "Tue",
+        Date: "2019-01-01T00:00:00", 
+        Duration : getDurationByDay("2019-01-01T00:00:00")
+    },
+    {
+        day_of_week: "Wed",
+        Date: "2019-01-01T00:00:00", 
+        Duration : getDurationByDay("2019-01-01T00:00:00")
+    },
+    {
+        day_of_week: "Thu",
+        Date: "2019-01-01T00:00:00", 
+        Duration: getDurationByDay("2019-01-01T00:00:00")
+    },
+    {
+        day_of_week: "Fri",
+        Date: "2019-01-01T00:00:00", 
+        Duration: getDurationByDay("2019-01-01T00:00:00")
+    },
+    {
+        day_of_week: "Sat",
+        Date: "2019-01-01T00:00:00", 
+        Duration: getDurationByDay("2019-01-01T00:00:00")
+    },
+    {
+        day_of_week: "Sun",
+        Date: "2019-01-01T00:00:00", 
+        Duration: getDurationByDay("2019-01-01T00:00:00")
+    },
+];
+
 const buildStreaks = () =>{
     // TODO use relative height in css
     let week_days_durations = [];
-
-    const pomodoros = getTotalDurationOfTask("1");
-    // console.log(pomodoros); // yay it works
-    
+    days_of_week.forEach(day => week_days_durations.push(day.Duration));
     //> for each pomodoro, get and store pomodoro duration
-    
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        datasets: [{
+          label: '# of Hours',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  
 }
 
 buildStreaks();
