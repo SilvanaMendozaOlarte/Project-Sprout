@@ -33,15 +33,15 @@
     width: 35px;
     height: 35px;
 }
-/* Collapsible Style */
+
 .collapsible {
     position: relative;
     background-color: lightcoral;
     color: Black;
-    border-color: lightgray;
     cursor: pointer;
     padding: 18px;
     width: 90%;
+    border: none;
     text-align: left;
     outline: none;
     font-size: 15px;
@@ -60,12 +60,6 @@
     width: 47.75%;
     background-color: white;
     margin-left: 60px;
-}
-/* Project Popup Style */
-#createProjectButton {
-    margin-top: 10px;
-    margin-left: 60px;
-    margin-bottom: 10px;
 }
 
 .projectPopup {
