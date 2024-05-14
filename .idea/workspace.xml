@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0a5d014-04b3-4038-9042-0a9261aa0007" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/milestone-02/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/milestone-02/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/milestone-02/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/milestone-02/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +26,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JavaScript Debug.index.html.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_opened_file_path": "/Users/thewelcomer/Coding/326/Final Project/Project-Sprout",
     "node.js.detected.package.eslint": "true",
@@ -33,7 +34,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Issue.Navigation",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -53,7 +54,9 @@
       <option name="presentableId" value="Default" />
       <updated>1715714231539</updated>
       <workItem from="1715714233028" duration="1632000" />
-      <workItem from="1715716445687" duration="317000" />
+      <workItem from="1715716445687" duration="992000" />
+      <workItem from="1715725707556" duration="86000" />
+      <workItem from="1715727015006" duration="639000" />
     </task>
     <servers />
   </component>
