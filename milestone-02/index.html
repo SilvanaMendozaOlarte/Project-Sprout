@@ -184,12 +184,6 @@
         </div>
         <!-- Collapsible List -->
         <div id="collapsibles">
-            <button type="button" class="collapsible" id="buttonmisc">
-                Miscellaneous Tasks
-            </button>
-            <div class="content" id="divmisc">
-                <menu id="menumisc"></menu>
-            </div>
         </div>
     </div>
 
@@ -566,7 +560,56 @@
         var i;
         for (i = 0; i < data.length; i++) {
             let projectName = data[i].name;
-            
+            const newButton = document.createElement("button");
+            newButton.setAttribute("type", "button");
+            newButton.classList.add("collapsible");
+            newButton.setAttribute("id", "button"+projectName);
+            newButton.innerHTML = projectName;
+            const newDiv = document.createElement("div");
+            newDiv.classList.add("content");
+            newDiv.setAttribute("id", "div"+projectName);
+            const newMenu = document.createElement("menu");
+            newMenu.setAttribute("id", "menu"+projectName);
+            newDiv.appendChild(newMenu);
+            collapsibleWrapper.appendChild(newButton);
+            collapsibleWrapper.appendChild(newDiv);
+            const projList = document.getElementById("projectList");
+            const projRmList = document.getElementById("projectRemoveList");
+            const taskRmProjectList = document.getElementById("taskRmProjectList");
+            const newProjListOption = document.createElement("option");
+            newProjListOption.setAttribute("value", projectName);
+            newProjListOption.setAttribute("id", "projlist"+projectName);
+            newProjListOption.innerHTML = projectName;
+            if (projectName === "Miscellaneous Tasks") {
+                const newProjRmListOption = document.createElement("option");
+                newProjRmListOption.setAttribute("value", projectName);
+                newProjRmListOption.setAttribute("id", "rmList"+projectName);
+                newProjRmListOption.innerHTML = projectName;
+                projRmList.appendChild(newProjRmListOption);
+            }
+            const newTaskRmProjListOption = document.createElement("option");
+            newTaskRmProjListOption.setAttribute("value", projectName);
+            newTaskRmProjListOption.setAttribute("id", "taskrmprojlist"+projectName);
+            newTaskRmProjListOption.innerHTML = projectName;
+            taskRmProjectList.appendChild(newTaskRmProjListOption);
+            projList.appendChild(newProjListOption);
+            for(let j = 0; j < data[i].tasks.length; j++) {
+                let taskName = data[i].tasks[j];
+                const projMenu = document.getElementById("menu"+projectName);
+                const newListElement = document.createElement("li");
+                newListElement.setAttribute("id", projectName+"list"+taskName.name);
+                newListElement.setAttribute("value", taskName.name);
+                newListElement.innerHTML = `<input type="checkbox"> `+ taskName.name + " (Due Date: " + taskName.due + ")";
+                projMenu.appendChild(newListElement);
+                const newTaskRmTaskListOption = document.createElement("option");
+                newTaskRmTaskListOption.setAttribute("value", taskName.name);
+                newTaskRmTaskListOption.setAttribute("id", "taskrmtasklist"+taskName.name);
+                newTaskRmTaskListOption.setAttribute("style", "display: none;");
+                let trimProjectList = projectName.replace(/\s/g, '');
+                newTaskRmTaskListOption.classList.add("taskrmproj"+trimProjectList);
+                newTaskRmTaskListOption.innerHTML = taskName.name;
+                taskRmTaskList.appendChild(newTaskRmTaskListOption);
+            }
         }
         const collapsibleWrapper = document.getElementById("collapsibles");
         var coll = document.getElementsByClassName("collapsible");
