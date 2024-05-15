@@ -289,16 +289,8 @@
             // db variables
             let projectName = projName.value;
 
-            const project = {
-                name: projectName,
-            };
-
-            fetch('http://127.0.0.1:3260/addProject', {
+            fetch(`http://127.0.0.1:3260/addProject?name=${projectName}`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(project)
             })
             .then(response => {
                 if (!response.ok) {
@@ -340,17 +332,8 @@
             let taskName = tskName.value;
             let date = taskDueDate.value;
 
-            const task = {
-                name: taskName,
-                due: date,
-            };
-
-            fetch('http://127.0.0.1:3260/addTask', {
+            fetch(`http://127.0.0.1:3260/addTask?name=${taskName}`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(projectName, taskName, date)
             })
             .then(response => {
                 if (!response.ok) {
@@ -532,6 +515,25 @@
 
         // The rest of this script creates event listeners for each of the 
         // current collapsibles whenever the page is opened/refreshed.
+        fetch('http://127.0.0.1:3260/getProjects', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
         const collapsibleWrapper = document.getElementById("collapsibles");
         var coll = document.getElementsByClassName("collapsible");
         var i;
