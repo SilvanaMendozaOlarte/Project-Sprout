@@ -332,7 +332,7 @@
             let taskName = tskName.value;
             let date = taskDueDate.value;
 
-            fetch(`http://127.0.0.1:3260/addTask?name=${taskName}`, {
+            fetch(`http://127.0.0.1:3260/addTask?project=${projectName}&name=${taskName}&due=${date}`, {
                 method: 'POST',
             })
             .then(response => {
@@ -515,25 +515,6 @@
 
         // The rest of this script creates event listeners for each of the 
         // current collapsibles whenever the page is opened/refreshed.
-        fetch('http://127.0.0.1:3260/getProjects', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response from server:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-
         const collapsibleWrapper = document.getElementById("collapsibles");
         var coll = document.getElementsByClassName("collapsible");
         var i;
