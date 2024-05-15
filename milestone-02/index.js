@@ -4,9 +4,8 @@ import * as url from "url";
 import Database from "./database.js";
 import path from "path";
 
-// A basic server function to implement a simple RESTful API.
+
 async function basicServer(request, response) {
-  // Parse the URL to get the pathname and the query parameters.
   response.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
   response.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
   response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
