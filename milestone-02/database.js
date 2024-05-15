@@ -112,7 +112,7 @@ const Database = async (dbname) => {
         {
           return {
             status: 'error',
-            message: 'Failed to save project',
+            message: 'Failed to delete project',
             error: e.message
           };
         }
