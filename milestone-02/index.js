@@ -75,12 +75,7 @@ async function basicServer(request, response) {
 
   
   } else {
-
-    // Helper function to read a file and send it back to the client.
     const sendIt = async (pathname, type) => {
-      // The client files are found in the client directory, so we must prepend
-      // the client path to the file requested. We also recognize the meaning of
-      // a '/' to refer to the index.html file.
       const file = pathname === "/" ? "index.html" : pathname;
       try {
         const data = await readFile(
@@ -100,8 +95,6 @@ async function basicServer(request, response) {
       }
       response.end();
     };
-
-    // Determine the content type of the requested file (if it is a file).
     if (pathname.endsWith(".css")) {
       sendIt(pathname, "text/css");
     } else if (pathname.endsWith(".js")) {
@@ -117,8 +110,6 @@ async function basicServer(request, response) {
     }
   }
 }
-
-// Start the server on port 3260.
 http.createServer(basicServer).listen(3260, () => {
   console.log("Server started on port 3260");
 });
