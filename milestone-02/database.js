@@ -12,24 +12,30 @@ import PouchDB from "pouchdb";
  * @param {string} dbname - The name of the database to initialize.
  */
 const initdb = async (dbname) => {
-  // Initialize the database if it doesn't exist
+ 
   const db = new PouchDB(dbname);
 
-  // Get the words collection. If it doesn't exist, create it.
+ 
   try {
-    const words = await db.get("words");
+    const projects = await db.get("projects");
   } catch (e) {
-    await db.put({ _id: "words", words: [] });
+    await db.put({ _id: "projects", projects: [{name:'Miscellaneous Tasks', tasks:[]}]});
   }
 
-  // Get the games collection. If it doesn't exist, create it.
+  
   try {
-    const games = await db.get("games");
+    const pomodoros = await db.get("pomodoros");
   } catch (e) {
-    await db.put({ _id: "games", games: [] });
+    await db.put({ _id: "pomodoros", pomodoros: [] });
   }
 
-  // Close the database connection
+  try {
+    const pomodoros = await db.get("shop-items");
+  } catch (e) {
+    await db.put({ _id: "shop-items", shop_items: [] });
+  }
+
+
   await db.close();
 };
 
@@ -58,23 +64,6 @@ const Database = async (dbname) => {
   const getDB = () => new PouchDB(dbname);
 
   const obj = {
-    /**
-     * Asynchronously saves a score for a specific word into the database. This
-     * method handles database connection, data retrieval, data modification,
-     * and error handling.
-     *
-     * @param {string} name - The name of the player for whom the score is being
-     * saved.
-     * @param {string} word - The word associated with the score.
-     * @param {number} score - The score achieved for the given word.
-     * @returns {Promise<object>} A promise that resolves to an object
-     *                            indicating the result of the operation. If
-     *                            successful, returns an object with `{ status:
-     *                            'success' }`. If an error occurs, returns an
-     *                            object with `{ status: 'error', message:
-     *                            'Failed to save word score', error: <error
-     *                            message> }`.
-     */
     saveWordScore: async (name, word, score) => {
       try {
         const db = getDB();
@@ -91,33 +80,11 @@ const Database = async (dbname) => {
         };
       }
     },
-
-    /**
-     * Asynchronously saves a game score to the database. This function manages
-     * the process of connecting to the database, retrieving the game scores,
-     * updating them, and saving the changes back to the database. It also
-     * handles errors that might occur during the process.
-     *
-     * @param {string} name - The name of the player for whom the score is being
-     * saved.
-     * @param {number} score - The score achieved by the player in the game.
-     * @returns {Promise<object>} A promise that resolves to an object
-     *                            indicating the result of the operation. If
-     *                            successful, returns an object with `{ status:
-     *                            'success' }`. If an error occurs, returns an
-     *                            object with `{ status: 'error', message:
-     *                            'Failed to save game score', error: <error
-     *                            message> }`.
-     */
-    saveGameScore: async (name, score) => {
-      // TASK #7: Implement saveGameScore
-      // Hint: You can use the saveWordScore method as a reference.
-      // Hint: You will need to update the 'games' collection instead of the
-      //       'words' collection.
+    addProject: async (name) => {
       try{
         const db = getDB();
-        const data = await db.get('games')
-        data.games.push({name,score})
+        const data = await db.get('projects')
+        data.projects.push({name,tasks:[]})
         await db.put(data)
         await db.close()
         return {status: 'success'}
@@ -126,43 +93,57 @@ const Database = async (dbname) => {
       {
         return {
           status: 'error',
-          message: 'Failed to save game score',
+          message: 'Failed to save project',
           error: e.message
         };
       }
     },
-
-    /**
-     * Asynchronously retrieves the top 10 word scores from the database. This
-     * function handles the process of connecting to the database, fetching the
-     * words data, sorting the scores from highest to lowest, and returning the
-     * top 10 entries.
-     *
-     * @returns {Promise<object>} A promise that resolves to an object
-     *                            indicating the result of the operation. If
-     *                            successful, returns an object with `{ status:
-     *                            'success', data: Array }` where `data`
-     *                            contains the top 10 scores as an array of
-     *                            objects. If an error occurs, returns an object
-     *                            with `{ status: 'error', message: 'Failed to
-     *                            retrieve word scores', error: <error message>
-     *                            }`.
-     */
-    top10WordScores: async () => {
-      // TASK #8: Implement top10WordScores
+    getProjects: async () => {
       try{
         const db = getDB()
-        const data = await db.get('words')
-        const data2 = data.words.sort((a,b)=> b.score - a.score)
-        data2.length = 10
+        const data = await db.get('projects')
         await db.close()
-        return { status:'success', data: data2 }
+        return { status:'success', data: data }
       }
       catch(e)
       {
-        return{ status: 'error', message: 'Failed to retrieve word scores', error: e.message};
+        return{ status: 'error', message: 'Failed to retrieve projects', error: e.message};
       }
     },
+    addTask: async (project,name,due) => {
+        try{
+          const db = getDB();
+          const data = await db.get('projects')
+          const index = data.projects.map(e=> e.name).indexOf(project)
+          const proj = data.projects[index]
+          proj.tasks.push({name,due})
+          await db.put(data)
+          await db.close()
+          return {status: 'success'}
+        }
+        catch(e)
+        {
+          return {
+            status: 'error',
+            message: 'Failed to save task',
+            error: e.message
+          };
+        }
+      },
+      getTasksInProject: async (project) => {
+        try{
+          const db = getDB()
+          const data = await db.get('projects')
+          const index = data.projects.map(e=> e.name).indexOf(project)
+          const proj = data.projects[index]
+          await db.close()
+          return { status:'success', data: proj.tasks }
+        }
+        catch(e)
+        {
+          return{ status: 'error', message: 'Failed to retrieve tasks', error: e.message};
+        }
+      },
 
     /**
      * Asynchronously retrieves the top 10 game scores from the database. This
