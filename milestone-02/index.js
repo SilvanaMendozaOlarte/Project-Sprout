@@ -27,80 +27,54 @@ async function basicServer(request, response) {
 
   if (method === "POST" && pathname === "/addProject") {
     console.log("POST /addProject");
-    // Create a new database instance.
-    console.log( `hello query.name ${JSON.parse(query.body)}`)
     const database = await Database("tomato");
-    let bod =await database.addProject(query.body)
+    let bod =await database.addProject(query.name)
     response.writeHead(200)
-    response.write(bod)
+    response.body = bod
     response.end()
-    // TASK #10: Implement the /wordScore endpoint.
-    // Add your implementation here.
-
-    // HTTP status code 501 Not Implemented is returned by a server when the
-    // request method is not supported by the server and cannot be handled. This
-    // status code implies that the server either does not recognize the request
-    // method, or it lacks the ability to fulfill the request. Essentially, the
-    // server understands the request method, but it doesn't have the
-    // capabilities to execute it.
+    
   } else if (method === "GET" && pathname === "/projects") {
     console.log("GET /projects");
-    // Create a new database instance.
     const database = await Database("tomato");
     let bod =await database.getProjects()
     response.writeHead(200)
     response.body = bod
     response.end()
 
-    // TASK #11: Implement the /highestWordScores endpoint.
-    // Add your implementation here.
-
-    // HTTP status code 501 Not Implemented is returned by a server when the
-    // request method is not supported by the server and cannot be handled. This
-    // status code implies that the server either does not recognize the request
-    // method, or it lacks the ability to fulfill the request. Essentially, the
-    // server understands the request method, but it doesn't have the
-    // capabilities to execute it.
   } else if (method === "DELETE" && pathname === "/removeProject") {
-    // Create a new database instance.
     console.log("DELETE /removeProject");
     const database = await Database("tomato");
     let bod = await database.deleteProject(query.name)
     response.writeHead(200)
     response.body = bod
     response.end()
-    // TASK #12: Implement the /gameScore endpoint.
-    // Add your implementation here.
+    
+    } else if (method === "POST" && pathname === "/addtask") {
+        console.log("POST /addTask");
+        const database = await Database("tomato");
+        let bod =await database.addTask(query.project,query.name,query.due)
+        response.writeHead(200)
+        response.body = bod
+        response.end()
+        
+      } else if (method === "GET" && pathname === "/tasks") {
+        console.log("GET /tasks");
+        const database = await Database("tomato");
+        let bod =await database.getTasksInProject(query.project)
+        response.writeHead(200)
+        response.body = bod
+        response.end()
+    
+      } else if (method === "DELETE" && pathname === "/removeTask") {
+        console.log("DELETE /removeProject");
+        const database = await Database("tomato");
+        let bod = await database.deleteProject(query.project,query.name)
+        response.writeHead(200)
+        response.body = bod
+        response.end()
 
-    // HTTP status code 501 Not Implemented is returned by a server when the
-    // request method is not supported by the server and cannot be handled. This
-    // status code implies that the server either does not recognize the request
-    // method, or it lacks the ability to fulfill the request. Essentially, the
-    // server understands the request method, but it doesn't have the
-    // capabilities to execute it.
-  } else if (method === "GET" && pathname === "/highestGameScores") {
-    // Create a new database instance.
-    console.log("GET /highestGameScores");
-    const database = await Database("scrabble");
-
-    // TASK #13: Implement the /highestGameScores endpoint.
-    // Add your implementation here.
-    let bod = await database.top10GameScores()
-    response.writeHead(200)
-    response.body = bod
-    response.end()
-
-    // HTTP status code 501 Not Implemented is returned by a server when the
-    // request method is not supported by the server and cannot be handled. This
-    // status code implies that the server either does not recognize the request
-    // method, or it lacks the ability to fulfill the request. Essentially, the
-    // server understands the request method, but it doesn't have the
-    // capabilities to execute it.
+  
   } else {
-    // This part handles the static files. If we do not match any of the routes
-    // above, we assume it is a static file and serve it from the 'client'
-    // directory. This means we neeed to read the file from the file system and
-    // send it back to the client.
 
     // Helper function to read a file and send it back to the client.
     const sendIt = async (pathname, type) => {
