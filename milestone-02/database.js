@@ -183,38 +183,13 @@ const Database = async (dbname) => {
             error: e.message
           };
         }
-      },
-
-    /**
-     * Asynchronously retrieves the top 10 game scores from the database. This
-     * method handles the full lifecycle of this operation, including database
-     * connection, data retrieval, sorting the scores from highest to lowest,
-     * and then slicing the top 10 scores for return.
-     *
-     * @returns {Promise<object>} A promise that resolves to an object
-     *                            indicating the result of the operation. If
-     *                            successful, it returns an object with `{
-     *                            status: 'success', data: Array }`, where
-     *                            `data` contains the top 10 game scores as an
-     *                            array of objects. If an error occurs, it
-     *                            returns an object with `{ status: 'error',
-     *                            message: 'Failed to retrieve game scores',
-     *                            error: <error message> }`.
-     */
-    
+      }, 
   };
 
   return obj;
 };
 
 /**
- * Exports the Database factory function which sets up and manages a database
- * tailored for storing and retrieving game and word scores. This module
- * provides a set of operations including saving scores, fetching top scores,
- * and initializing necessary database structures.
- *
- * The exported Database function ensures each call initializes or connects to a
- * specific database instance identified by the given database name.
  *
  * @module Database
  * @function
