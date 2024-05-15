@@ -11,6 +11,13 @@ async function basicServer(request, response) {
   response.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
   response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
+
+  if (request.method === 'OPTIONS') {
+    // Handle preflight requests
+    response.writeHead(200);
+    response.end();
+    return;
+  }
   const parsedUrl = url.parse(request.url, true);
   const pathname = parsedUrl.pathname;
   const query = parsedUrl.query;
@@ -21,10 +28,11 @@ async function basicServer(request, response) {
   if (method === "POST" && pathname === "/addProject") {
     console.log("POST /addProject");
     // Create a new database instance.
+    console.log( `hello query.name ${JSON.parse(query.body)}`)
     const database = await Database("tomato");
-    let bod =await database.addProject(query.name)
+    let bod =await database.addProject(query.body)
     response.writeHead(200)
-    response.body = bod
+    response.write(bod)
     response.end()
     // TASK #10: Implement the /wordScore endpoint.
     // Add your implementation here.
