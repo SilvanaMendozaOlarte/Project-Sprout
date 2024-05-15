@@ -41,21 +41,38 @@
         <input type="button" id="sign_in_to_sign_up" value="Sign Up">
     </div>
 
-    <!-- TODO - Silvana -->
+    <!-- Pomodoro -->
 
     <div id="pomodoro" class="page" style="display: none;">
         <br>
         <div id="timer">
-            <div id="num_reps" class="navbar">
-                <div>
-
+            <div id="num_reps" class="timer_navbar">
+                <div class="timer_tab">
+                    <input type="text" id="timer_rounds" placeholder="Enter # of Work/Rest Rounds" style="width: 300px">
                 </div>
             </div>
-            <div id="pomodoro_work" class="navbar">
-
-            </div>
-            <div id="pomodoro_break" class="navbar">
-
+            <span id="pomodoro_work" class="timer_navbar">
+                <div class="timer_tab">
+                    Work Timer
+                </div>
+                <span>
+                    <input type="text" id="work_minutes" placeholder="Enter Minutes">
+                    <input type="text" id="work_seconds" placeholder="Enter Seconds">
+                </span>
+                <div></div>
+            </span>
+            <span id="pomodoro_break" class="timer_navbar">
+                <div class="timer_tab">
+                    Rest Timer
+                </div>
+                <span>
+                    <input type="text" id="rest_minutes" placeholder="Enter Minutes">
+                    <input type="text" id="rest_seconds" placeholder="Enter Seconds">
+                </span>
+                <div></div>
+            </span>
+            <div id="pomodoro_begin" class="timer_navbar">
+                <button class="tab" id="start_timer">Start Timer</button>
             </div>
         </div>
         <div class="left_boxes" id="streaks_container" >
@@ -66,12 +83,12 @@
         </div>
     </div>
 
-    <!-- TODO - Jacob -->
+    <!-- Farm -->
     <script type = 'module' src="farm.js"></script>
     <link rel="stylesheet" href="farm_styles.css">
 
     <div id="farm" class="page" style="display: none;">
-       
+    
         
         <div id = 'farm-demo'>
             
@@ -96,7 +113,7 @@
         </div>
     </div>
 
-    <!-- TODO - Donald -->
+    <!-- Shop -->
 
     <div id="shop" class="page" style="display: none;">
         <h1>Shop</h1>
@@ -127,7 +144,7 @@
         </div>
     </div>
 
-    <!-- TODO - Chris -->
+    <!-- Tasks -->
 
     <div id="projects" class="page" style="display: none;">
         <h1 style="margin-left: 65px;">Projects and Tasks</h1>
@@ -507,6 +524,7 @@
         // Imports page and shop category changing functions
         import ChangePage from './changePage.js';
         import ChangeShopCategory from './changeShopCategory.js';
+        import timer from './timer.js';
         // Instantiates page and shop category changing objects
         const pageChanger = new ChangePage();
         const shopCategoryChanger = new ChangeShopCategory();
@@ -535,6 +553,8 @@
                     shopCategoryChanger.changeShopCategory('shop_category_house', data);
                 });
             });
+    
+        document.getElementById('start_timer').addEventListener('click', timer)
     </script>
     <script src="Calendar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
