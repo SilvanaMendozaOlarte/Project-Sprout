@@ -376,6 +376,22 @@
             projListOption.remove();
             projRmListOption.remove();
             taskRmListOption.remove();
+
+            fetch(`http://127.0.0.1:3260/removeProject?project=${project}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
 
         function deleteTask() {
@@ -389,6 +405,22 @@
 
             taskToRemove.remove();
             rmFromTaskRmList.remove();
+
+            fetch(`http://127.0.0.1:3260/removeTask?project=${project}&task=${task}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
 
         // Opens the "Create New Project" popup
@@ -515,9 +547,29 @@
 
         // The rest of this script creates event listeners for each of the 
         // current collapsibles whenever the page is opened/refreshed.
+        fetch('http://127.0.0.1:3260/getProjects', {
+                method: 'GET',
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        let projects = JSON.parse(data);
+        var i;
+        for (i = 0; i < data.length; i++) {
+            let projectName = data[i].name;
+            
+        }
         const collapsibleWrapper = document.getElementById("collapsibles");
         var coll = document.getElementsByClassName("collapsible");
-        var i;
         for (i = 0; i < coll.length; i++) {
             coll[i].addEventListener("click", function() {
                 this.classList.toggle("active");
