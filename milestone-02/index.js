@@ -7,6 +7,10 @@ import path from "path";
 // A basic server function to implement a simple RESTful API.
 async function basicServer(request, response) {
   // Parse the URL to get the pathname and the query parameters.
+  response.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
+  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   const parsedUrl = url.parse(request.url, true);
   const pathname = parsedUrl.pathname;
   const query = parsedUrl.query;
@@ -14,11 +18,11 @@ async function basicServer(request, response) {
   // Grab the HTTP method.
   const method = request.method;
 
-  if (method === "POST" && pathname === "/wordScore") {
-    console.log("POST /wordScore");
+  if (method === "POST" && pathname === "/addProject") {
+    console.log("POST /addProject");
     // Create a new database instance.
-    const database = await Database("scrabble");
-    let bod =await database.saveWordScore(query.name,query.word,query.score)
+    const database = await Database("tomato");
+    let bod =await database.addProject(query.name)
     response.writeHead(200)
     response.body = bod
     response.end()
@@ -31,11 +35,11 @@ async function basicServer(request, response) {
     // method, or it lacks the ability to fulfill the request. Essentially, the
     // server understands the request method, but it doesn't have the
     // capabilities to execute it.
-  } else if (method === "GET" && pathname === "/highestWordScores") {
-    console.log("GET /highestWordScores");
+  } else if (method === "GET" && pathname === "/projects") {
+    console.log("GET /projects");
     // Create a new database instance.
-    const database = await Database("scrabble");
-    let bod =await database.top10WordScores()
+    const database = await Database("tomato");
+    let bod =await database.getProjects()
     response.writeHead(200)
     response.body = bod
     response.end()
@@ -49,11 +53,11 @@ async function basicServer(request, response) {
     // method, or it lacks the ability to fulfill the request. Essentially, the
     // server understands the request method, but it doesn't have the
     // capabilities to execute it.
-  } else if (method === "POST" && pathname === "/gameScore") {
+  } else if (method === "DELETE" && pathname === "/removeProject") {
     // Create a new database instance.
-    console.log("POST /gameScore");
-    const database = await Database("scrabble");
-    let bod = await database.saveGameScore(query.name,query.score)
+    console.log("DELETE /removeProject");
+    const database = await Database("tomato");
+    let bod = await database.deleteProject(query.name)
     response.writeHead(200)
     response.body = bod
     response.end()

@@ -98,6 +98,25 @@ const Database = async (dbname) => {
         };
       }
     },
+    deleteProject: async (name) => {
+        try{
+          const db = getDB();
+          const data = await db.get('projects')
+          const index = data.projects.map(e=> e.name).indexOf(name)
+          data.projects.splice(index,1)
+          await db.put(data)
+          await db.close()
+          return {status: 'success'}
+        }
+        catch(e)
+        {
+          return {
+            status: 'error',
+            message: 'Failed to save project',
+            error: e.message
+          };
+        }
+      },
     getProjects: async () => {
       try{
         const db = getDB()
