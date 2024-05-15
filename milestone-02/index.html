@@ -285,6 +285,10 @@
             taskRmProjectList.appendChild(newTaskRmProjListOption);
             projList.appendChild(newProjListOption);
             projRmList.appendChild(newProjRmListOption);
+            
+            // db variables
+            let projectName = projName.value;
+            
         }
 
         function addTask() {
@@ -306,12 +310,23 @@
             newTaskRmTaskListOption.classList.add("taskrmproj"+trimProjectList);
             newTaskRmTaskListOption.innerHTML = tskName.value;
             taskRmTaskList.appendChild(newTaskRmTaskListOption);
+
+            // db variables
+            let project = projectList.value;
+            let taskName = tskName.value;
+            let due = taskDueDate.value;
+
+
         }
 
         function deleteProject() {
             // Deletes the project chosen in the "Delete Project" popup
             const removeButton = document.getElementById("button"+projectRemoveList.value);
             const removeDiv = document.getElementById("div"+projectRemoveList.value);
+            
+            // db variables
+            let project = projectRemoveList.value;
+
             removeDiv.remove();
             removeButton.remove();
             // Removes the deleted project from the project lists in the "Add Task",
@@ -337,6 +352,11 @@
             // Deletes the chosen task and removes it from the "Delete Task" popup
             const taskToRemove = document.getElementById(taskRmProjectList.value+"list"+taskRmTaskList.value);
             const rmFromTaskRmList = document.getElementById("taskrmtasklist"+taskRmTaskList.value);
+
+            // db variables
+            let project = taskRmProjectList.value;
+            let task = taskRmTaskList.value;
+
             taskToRemove.remove();
             rmFromTaskRmList.remove();
         }
