@@ -322,6 +322,34 @@
             taskRmProjectList.appendChild(newTaskRmProjListOption);
             projList.appendChild(newProjListOption);
             projRmList.appendChild(newProjRmListOption);
+            
+            // db variables
+            let projectName = projName.value;
+
+            const project = {
+                name: projectName,
+            };
+
+            fetch('http://127.0.0.1:3260/addProject', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(project)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            
         }
 
         function addTask() {
@@ -343,12 +371,46 @@
             newTaskRmTaskListOption.classList.add("taskrmproj"+trimProjectList);
             newTaskRmTaskListOption.innerHTML = tskName.value;
             taskRmTaskList.appendChild(newTaskRmTaskListOption);
+
+            // db variables
+            let projectName = projectList.value;
+            let taskName = tskName.value;
+            let date = taskDueDate.value;
+
+            const task = {
+                name: taskName,
+                due: date,
+            };
+
+            fetch('http://127.0.0.1:3260/addTask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(projectName, taskName, date)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
 
         function deleteProject() {
             // Deletes the project chosen in the "Delete Project" popup
             const removeButton = document.getElementById("button"+projectRemoveList.value);
             const removeDiv = document.getElementById("div"+projectRemoveList.value);
+            
+            // db variables
+            let project = projectRemoveList.value;
+
             removeDiv.remove();
             removeButton.remove();
             // Removes the deleted project from the project lists in the "Add Task",
@@ -374,6 +436,11 @@
             // Deletes the chosen task and removes it from the "Delete Task" popup
             const taskToRemove = document.getElementById(taskRmProjectList.value+"list"+taskRmTaskList.value);
             const rmFromTaskRmList = document.getElementById("taskrmtasklist"+taskRmTaskList.value);
+
+            // db variables
+            let project = taskRmProjectList.value;
+            let task = taskRmTaskList.value;
+
             taskToRemove.remove();
             rmFromTaskRmList.remove();
         }
