@@ -19,7 +19,7 @@ const timer = () => {
         if (working) {
             if (workSeconds.value === '0') {
                 if (workMinutes.value === '0') {
-                    if (curRounds === 0) {
+                    if (curRounds === 1) {
                         rounds.disabled = false
                         workMinutes.disabled = false
                         workSeconds.disabled = false
@@ -50,7 +50,7 @@ const timer = () => {
                     working = true
                     workMinutes.value = startWorkMinutes
                     workSeconds.value = startWorkSeconds
-                    if (curRounds !== 1) {
+                    if (curRounds !== 2) {
                         restMinutes.value = startRestMinutes
                         restSeconds.value = startRestSeconds
                     }
