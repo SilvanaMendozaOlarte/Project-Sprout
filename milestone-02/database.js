@@ -163,6 +163,27 @@ const Database = async (dbname) => {
           return{ status: 'error', message: 'Failed to retrieve tasks', error: e.message};
         }
       },
+      deleteTask: async (project,name) => {
+        try{
+          const db = getDB();
+          const data = await db.get('projects')
+          const index = data.projects.map(e=> e.name).indexOf(project)
+          const proj = data.projects[index]
+          const taskindex = proj.tasks.map(e=> e.name).indexOf(name)
+          proj.tasks.splice(taskindex,1)
+          await db.put(data)
+          await db.close()
+          return {status: 'success'}
+        }
+        catch(e)
+        {
+          return {
+            status: 'error',
+            message: 'Failed to delete task',
+            error: e.message
+          };
+        }
+      },
 
     /**
      * Asynchronously retrieves the top 10 game scores from the database. This
@@ -180,21 +201,7 @@ const Database = async (dbname) => {
      *                            message: 'Failed to retrieve game scores',
      *                            error: <error message> }`.
      */
-    top10GameScores: async () => {
-      // TASK #9: Implement top10GameScores
-      try{
-        const db = getDB()
-        const data = await db.get('games')
-        const data2 = data.games.sort((a,b)=> b.score - a.score)
-        data2.length = 10
-        await db.close()
-        return { status:'success', data: data2 }
-      }
-      catch(e)
-      {
-        return{ status: 'error', message: 'Failed to retrieve game scores', error: e.message};
-      }
-    },
+    
   };
 
   return obj;

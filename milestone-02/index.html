@@ -326,22 +326,14 @@
             // db variables
             let projectName = projName.value;
 
-            const project = {
-                name: projectName,
-            };
-
-            fetch('http://127.0.0.1:3260/addProject', {
+            fetch(`http://127.0.0.1:3260/addProject?name=${projectName}`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(project)
             })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                return response.json();
+                return response.text();
             })
             .then(data => {
                 console.log('Response from server:', data);
@@ -377,17 +369,8 @@
             let taskName = tskName.value;
             let date = taskDueDate.value;
 
-            const task = {
-                name: taskName,
-                due: date,
-            };
-
-            fetch('http://127.0.0.1:3260/addTask', {
+            fetch(`http://127.0.0.1:3260/addTask?project=${projectName}&name=${taskName}&due=${date}`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(projectName, taskName, date)
             })
             .then(response => {
                 if (!response.ok) {
