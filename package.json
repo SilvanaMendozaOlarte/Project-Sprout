@@ -26,7 +26,10 @@
     "dev": "",
     "test": "",
     "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s",
-    "milestone-02": "http-server milestone-02 -p 5500 -c-1 -o -s"
+    "milestone-02": "http-server milestone-02 -p 5500 -c-1 -o -s",
+    "ms-3-cli": "http-server milestone-03/client -p 5500 -c-1 -o -s",
+    "ms-3-serv": "node milestone-03/Server/index.js",
+    "milestone-03":"npm run ms-3-cli & npm run ms-3-serv" 
   },
   "devDependencies": {
     "html-validate": "^8.18.1",
