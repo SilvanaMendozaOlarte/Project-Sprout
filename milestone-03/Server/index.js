@@ -28,50 +28,44 @@ async function basicServer(request, response) {
   if (method === "POST" && pathname === "/addProject") {
     console.log("POST /addProject");
     const database = await Database("tomato");
-    let bod =await database.addProject(query.name)
-    response.writeHead(200)
-    response.body = bod
-    response.end()
+    let bod = await database.addProject(query.name)
+    response.writeHead(200, {"Content-Type": "application/json"});
+    response.end(JSON.stringify(bod));
     
   } else if (method === "GET" && pathname === "/projects") {
     console.log("GET /projects");
     const database = await Database("tomato");
     let bod = await database.getProjects()
-    response.writeHead(200)
-    response.body = bod
-    response.end()
+    response.writeHead(200, {"Content-Type": "application/json"});
+    response.end(JSON.stringify(bod.data.projects));
 
   } else if (method === "DELETE" && pathname === "/removeProject") {
     console.log("DELETE /removeProject");
     const database = await Database("tomato");
     let bod = await database.deleteProject(query.name)
-    response.writeHead(200)
-    response.body = bod
-    response.end()
+    response.writeHead(200, {"Content-Type": "application/json"});
+    response.end(JSON.stringify(bod));
     
     } else if (method === "POST" && pathname === "/addtask") {
         console.log("POST /addTask");
         const database = await Database("tomato");
         let bod =await database.addTask(query.project,query.name,query.due)
-        response.writeHead(200)
-        response.body = bod
-        response.end()
+        response.writeHead(200, {"Content-Type": "application/json"});
+        response.end(JSON.stringify(bod));
         
       } else if (method === "GET" && pathname === "/tasks") {
         console.log("GET /tasks");
         const database = await Database("tomato");
         let bod =await database.getTasksInProject(query.project)
-        response.writeHead(200)
-        response.body = bod
-        response.end()
+        response.writeHead(200, {"Content-Type": "application/json"});
+        response.end(JSON.stringify(bod.data));
     
       } else if (method === "DELETE" && pathname === "/removeTask") {
         console.log("DELETE /removeProject");
         const database = await Database("tomato");
         let bod = await database.deleteProject(query.project,query.name)
-        response.writeHead(200)
-        response.body = bod
-        response.end()
+        response.writeHead(200, {"Content-Type": "application/json"});
+        response.end(JSON.stringify(bod));
 
   
   } else {
