@@ -542,13 +542,20 @@
         // The rest of this script creates event listeners for each of the 
         // current collapsibles whenever the page is opened/refreshed.
 
+       
+        let getprojs = async ()=>{ 
+        let ret = await fetch('http://127.0.0.1:3260/projects')
+        let ret2 = await ret.json()
+        return ret2
+        };
+        
         
 
-        fetch('http://127.0.0.1:3260/projects')
-.then(res => res.json()).then(data=>console.log(data))
-.catch(error => {
-  console.error('Error getting projects:', error);
-});
+        (async()=>
+        {let data = await getprojs();
+        console.log(data)
+
+        
 
         var i;
         for (i = 0; i < data.length; i++) {
@@ -617,6 +624,7 @@
                 }
             });
         }
+    })()
     </script>
 
     <!-- Module JavaScript -->
