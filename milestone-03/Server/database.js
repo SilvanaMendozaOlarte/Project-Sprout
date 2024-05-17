@@ -87,8 +87,6 @@ const Database = async (dbname) => {
         try{
           const db = getDB();
           const data = await db.get('projects')
-          if(name === undefined)
-            throw new error
           const index = data.projects.map(e=> e.name).indexOf(name)
           data.projects.splice(index,1)
           await db.put(data)
@@ -156,8 +154,6 @@ const Database = async (dbname) => {
           const data = await db.get('projects')
           const index = data.projects.map(e=> e.name).indexOf(project)
           const proj = data.projects[index]
-          if(name === undefined)
-            throw new error();
           const taskindex = proj.tasks.map(e=> e.name).indexOf(name)
           proj.tasks.splice(taskindex,1)
           await db.put(data)
