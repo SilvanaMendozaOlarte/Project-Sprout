@@ -46,7 +46,7 @@ async function basicServer(request, response) {
     response.writeHead(200, {"Content-Type": "application/json"});
     response.end(JSON.stringify(bod));
     
-    } else if (method === "POST" && pathname === "/addtask") {
+    } else if (method === "POST" && pathname === "/addTask") {
         console.log("POST /addTask");
         const database = await Database("tomato");
         let bod =await database.addTask(query.project,query.name,query.due)

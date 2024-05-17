@@ -101,24 +101,24 @@ let createTask = document.getElementById("createTask");
 
 // Creates a new project, clears the text box in the "Create New Project" 
 // popup, and closes the popup
-createProject.addEventListener("click", function () {
+createProject.addEventListener("click", async function () {
     let projName = document.getElementById("projectName");
     let checkProjectName = projName.value.trim();
     if (checkProjectName.length != 0 && !document.getElementById("button"+projName.value)) {
-        addProject(projName.value);
-        render();
+        await addProject(projName.value);
+        await render();
     }
     projName.value = "";
 });
 // Creates a new task, clears the text box in the "Create New Task" popup, 
 // and closes the popup
-createTask.addEventListener("click", function () {
+createTask.addEventListener("click", async function () {
     let tskName = document.getElementById("taskName");
     let checkTaskName = tskName.value.trim();
     let taskDueDate = document.getElementById("dueDate");
     if (checkTaskName.length != 0 && !document.getElementById(projectList.value+"list"+tskName.value) && taskDueDate.value != "") {
-        addTask(projectList.value, tskName.value, taskDueDate.value);
-        render();
+        await addTask(projectList.value, tskName.value, taskDueDate.value);
+        await render();
     }
     tskName.value = "";
 });
@@ -131,3 +131,5 @@ chooseTask.addEventListener("click", function () {
     deleteTask(taskRmProjectList.value, taskRmTaskList.value);
     render();
 });
+
+render()
