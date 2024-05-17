@@ -515,15 +515,11 @@
         // popup, and closes the popup
         createProject.addEventListener("click", function () {
             myAddProjectPopup.classList.remove("show");
-            let projName = document.getElementById("projectName");
-            projName.value = "";
         });
         // Creates a new task, clears the text box in the "Create New Task" popup, 
         // and closes the popup
         createTask.addEventListener("click", function () {
             myTaskPopup.classList.remove("show");
-            let tskName = document.getElementById("taskName");
-            tskName.value = "";
         });
         // Deletes the chosen project and closes the "Delete Project" popup
         removeProject.addEventListener("click", function () {
