@@ -10,6 +10,16 @@
     align-items: center;
 }
 
+.timer_navbar {
+    background-color: #EC2D01;
+    display: flex;
+    align-items: center;
+}
+
+#rest_timer_tabs {
+    margin: 100px;
+}
+
 #logo {
     width: 35px;
     height: 35px;
@@ -17,6 +27,14 @@
 }
 
 .tab {
+    border: none;
+    color: white;
+    background-color: #EC2D01;
+    padding: 14px 25px;
+    font-size: 16px;
+}
+
+.timer_tab {
     border: none;
     color: white;
     background-color: #EC2D01;
@@ -205,7 +223,7 @@ background-color: gray;
 }
 
 #calendar_container{
-    top: 75%; 
+    top: 92%;
 }
 
 #calendar {
@@ -229,7 +247,7 @@ background-color: gray;
 }
 
 #streaks_container {
-    top: 30%;
+    top: 50%;
 }
 
 .shop_item {
