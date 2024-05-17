@@ -109,7 +109,6 @@ createProject.addEventListener("click", function () {
         addProject(projName.value);
         render();
     }
-    projName.value = "";
 });
 // Creates a new task, clears the text box in the "Create New Task" popup, 
 // and closes the popup
@@ -121,7 +120,6 @@ createTask.addEventListener("click", function () {
         addTask(projectList.value, tskName.value, taskDueDate.value);
         render();
     }
-    tskName.value = "";
 });
 // Deletes the chosen project and closes the "Delete Project" popup
 removeProject.addEventListener("click", function () {
