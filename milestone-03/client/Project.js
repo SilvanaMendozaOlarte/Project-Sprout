@@ -98,7 +98,8 @@ let render = async() => {
 }
 let createProject = document.getElementById("createProject");
 let createTask = document.getElementById("createTask");
-
+let removeProject = document.getElementById("removeProject");
+let chooseTask = document.getElementById("chooseTask");
 // Creates a new project, clears the text box in the "Create New Project" 
 // popup, and closes the popup
 createProject.addEventListener("click", async function () {
@@ -108,7 +109,6 @@ createProject.addEventListener("click", async function () {
         await addProject(projName.value);
         await render();
     }
-    projName.value = "";
 });
 // Creates a new task, clears the text box in the "Create New Task" popup, 
 // and closes the popup
@@ -120,7 +120,6 @@ createTask.addEventListener("click", async function () {
         await addTask(projectList.value, tskName.value, taskDueDate.value);
         await render();
     }
-    tskName.value = "";
 });
 // Deletes the chosen project and closes the "Delete Project" popup
 removeProject.addEventListener("click", function () {
