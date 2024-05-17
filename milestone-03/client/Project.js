@@ -32,6 +32,12 @@ let render = async() => {
     let data = await getProjects();
     let collapsibleWrapper = document.getElementById("collapsibles");
     collapsibleWrapper.innerHTML = "";
+    let projList = document.getElementById("projectList");
+    let projRmList = document.getElementById("projectRemoveList");
+    let taskRmProjectList = document.getElementById("taskRmProjectList");
+    projList.innerHTML = "";
+    projRmList.innerHTML = "";
+    taskRmProjectList.innerHTML = "";
     for (var i = 0; i < data.length; i++) {
         let projectName = data[i].name;
         const newButton = document.createElement("button");
@@ -56,10 +62,7 @@ let render = async() => {
         newDiv.appendChild(newMenu);
         collapsibleWrapper.appendChild(newButton);
         collapsibleWrapper.appendChild(newDiv);
-        const projList = document.getElementById("projectList");
-        const projRmList = document.getElementById("projectRemoveList");
-        const taskRmProjectList = document.getElementById("taskRmProjectList");
-        const newProjListOption = document.createElement("option");
+        let newProjListOption = document.createElement("option");
         newProjListOption.setAttribute("value", projectName);
         newProjListOption.setAttribute("id", "projlist"+projectName);
         newProjListOption.innerHTML = projectName;
