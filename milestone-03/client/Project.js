@@ -32,6 +32,7 @@ let getProjects = async() => {
 
 let render = async() => {
     let data = await getProjects();
+    console.log(data)
     let collapsibleWrapper = document.getElementById("collapsibles");
     collapsibleWrapper.innerHTML = "";
     for (var i = 0; i < data.length; i++) {
@@ -98,3 +99,5 @@ let render = async() => {
         }
     }
 }
+
+render()
