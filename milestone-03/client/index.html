@@ -227,195 +227,195 @@
     <!-- Normal JavaScript -->
 
     <script>
-        function addProject() {
-            // This function creates a new project collapsible with the entered name
-            // from the popup, and gives it an id of "button" + the entered name.
-            // This collapsible is then given an event listener to open and close 
-            // when clicked on.
-            let projName = document.getElementById("projectName");
-            const newButton = document.createElement("button");
-            newButton.setAttribute("type", "button");
-            newButton.classList.add("collapsible");
-            newButton.setAttribute("id", "button"+projName.value);
-            newButton.innerHTML = projName.value;
-            newButton.addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-            });
-            // Then, the collapsible's div and menu elements are created and are given
-            // ids of "div" + entered name, and "menu" + entered name respectively.
-            // Then, the menu is appended as a child to the new div
-            const newDiv = document.createElement("div");
-            newDiv.classList.add("content");
-            newDiv.setAttribute("id", "div"+projName.value);
-            const newMenu = document.createElement("menu");
-            newMenu.setAttribute("id", "menu"+projName.value);
-            newDiv.appendChild(newMenu);
-            //The collapsible button and div are added to the collapsible wrapper
-            collapsibleWrapper.appendChild(newButton);
-            collapsibleWrapper.appendChild(newDiv);
-            // The newly created project is then added to the lists of created
-            // projects in the "Add Task", "Delete Project", and "Delete Task" popups.
-            const projList = document.getElementById("projectList");
-            const projRmList = document.getElementById("projectRemoveList");
-            const taskRmProjectList = document.getElementById("taskRmProjectList");
-            const newProjListOption = document.createElement("option");
-            newProjListOption.setAttribute("value", projName.value);
-            newProjListOption.setAttribute("id", "projlist"+projName.value);
-            newProjListOption.innerHTML = projName.value;
-            const newProjRmListOption = document.createElement("option");
-            newProjRmListOption.setAttribute("value", projName.value);
-            newProjRmListOption.setAttribute("id", "rmList"+projName.value);
-            newProjRmListOption.innerHTML = projName.value;
-            const newTaskRmProjListOption = document.createElement("option");
-            newTaskRmProjListOption.setAttribute("value", projName.value);
-            newTaskRmProjListOption.setAttribute("id", "taskrmprojlist"+projName.value);
-            newTaskRmProjListOption.innerHTML = projName.value;
-            taskRmProjectList.appendChild(newTaskRmProjListOption);
-            projList.appendChild(newProjListOption);
-            projRmList.appendChild(newProjRmListOption);
+        // function addProject() {
+        //     // This function creates a new project collapsible with the entered name
+        //     // from the popup, and gives it an id of "button" + the entered name.
+        //     // This collapsible is then given an event listener to open and close 
+        //     // when clicked on.
+        //     let projName = document.getElementById("projectName");
+        //     const newButton = document.createElement("button");
+        //     newButton.setAttribute("type", "button");
+        //     newButton.classList.add("collapsible");
+        //     newButton.setAttribute("id", "button"+projName.value);
+        //     newButton.innerHTML = projName.value;
+        //     newButton.addEventListener("click", function() {
+        //         this.classList.toggle("active");
+        //         var content = this.nextElementSibling;
+        //         if (content.style.display === "block") {
+        //             content.style.display = "none";
+        //         } else {
+        //             content.style.display = "block";
+        //         }
+        //     });
+        //     // Then, the collapsible's div and menu elements are created and are given
+        //     // ids of "div" + entered name, and "menu" + entered name respectively.
+        //     // Then, the menu is appended as a child to the new div
+        //     const newDiv = document.createElement("div");
+        //     newDiv.classList.add("content");
+        //     newDiv.setAttribute("id", "div"+projName.value);
+        //     const newMenu = document.createElement("menu");
+        //     newMenu.setAttribute("id", "menu"+projName.value);
+        //     newDiv.appendChild(newMenu);
+        //     //The collapsible button and div are added to the collapsible wrapper
+        //     collapsibleWrapper.appendChild(newButton);
+        //     collapsibleWrapper.appendChild(newDiv);
+        //     // The newly created project is then added to the lists of created
+        //     // projects in the "Add Task", "Delete Project", and "Delete Task" popups.
+        //     const projList = document.getElementById("projectList");
+        //     const projRmList = document.getElementById("projectRemoveList");
+        //     const taskRmProjectList = document.getElementById("taskRmProjectList");
+        //     const newProjListOption = document.createElement("option");
+        //     newProjListOption.setAttribute("value", projName.value);
+        //     newProjListOption.setAttribute("id", "projlist"+projName.value);
+        //     newProjListOption.innerHTML = projName.value;
+        //     const newProjRmListOption = document.createElement("option");
+        //     newProjRmListOption.setAttribute("value", projName.value);
+        //     newProjRmListOption.setAttribute("id", "rmList"+projName.value);
+        //     newProjRmListOption.innerHTML = projName.value;
+        //     const newTaskRmProjListOption = document.createElement("option");
+        //     newTaskRmProjListOption.setAttribute("value", projName.value);
+        //     newTaskRmProjListOption.setAttribute("id", "taskrmprojlist"+projName.value);
+        //     newTaskRmProjListOption.innerHTML = projName.value;
+        //     taskRmProjectList.appendChild(newTaskRmProjListOption);
+        //     projList.appendChild(newProjListOption);
+        //     projRmList.appendChild(newProjRmListOption);
             
-            // db variables
-            let projectName = projName.value;
+        //     // db variables
+        //     let projectName = projName.value;
 
-            fetch(`http://127.0.0.1:3260/addProject?name=${projectName}`, {
-                method: 'POST',
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                console.log('Response from server:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+        //     fetch(`http://127.0.0.1:3260/addProject?name=${projectName}`, {
+        //         method: 'POST',
+        //     })
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.text();
+        //     })
+        //     .then(data => {
+        //         console.log('Response from server:', data);
+        //     })
+        //     .catch(error => {
+        //         console.error('Error:', error);
+        //     });
             
-        }
+        // }
 
-        function addTask() {
-            // Creates a new task with a checkbox and the entered name, and adds it 
-            // to the chosen project collapsible
-            let tskName = document.getElementById("taskName");
-            const projMenu = document.getElementById("menu"+projectList.value);
-            const newListElement = document.createElement("li");
-            newListElement.setAttribute("id", projectList.value+"list"+tskName.value);
-            newListElement.setAttribute("value", tskName.value);
-            let taskDueDate = document.getElementById("dueDate");
-            newListElement.innerHTML = `<input type="checkbox"> `+ tskName.value + " (Due Date: " + taskDueDate.value + ")";
-            projMenu.appendChild(newListElement);
-            const newTaskRmTaskListOption = document.createElement("option");
-            newTaskRmTaskListOption.setAttribute("value", tskName.value);
-            newTaskRmTaskListOption.setAttribute("id", "taskrmtasklist"+tskName.value);
-            newTaskRmTaskListOption.setAttribute("style", "display: none;");
-            let trimProjectList = projectList.value.replace(/\s/g, '');
-            newTaskRmTaskListOption.classList.add("taskrmproj"+trimProjectList);
-            newTaskRmTaskListOption.innerHTML = tskName.value;
-            taskRmTaskList.appendChild(newTaskRmTaskListOption);
+        // function addTask() {
+        //     // Creates a new task with a checkbox and the entered name, and adds it 
+        //     // to the chosen project collapsible
+        //     let tskName = document.getElementById("taskName");
+        //     const projMenu = document.getElementById("menu"+projectList.value);
+        //     const newListElement = document.createElement("li");
+        //     newListElement.setAttribute("id", projectList.value+"list"+tskName.value);
+        //     newListElement.setAttribute("value", tskName.value);
+        //     let taskDueDate = document.getElementById("dueDate");
+        //     newListElement.innerHTML = `<input type="checkbox"> `+ tskName.value + " (Due Date: " + taskDueDate.value + ")";
+        //     projMenu.appendChild(newListElement);
+        //     const newTaskRmTaskListOption = document.createElement("option");
+        //     newTaskRmTaskListOption.setAttribute("value", tskName.value);
+        //     newTaskRmTaskListOption.setAttribute("id", "taskrmtasklist"+tskName.value);
+        //     newTaskRmTaskListOption.setAttribute("style", "display: none;");
+        //     let trimProjectList = projectList.value.replace(/\s/g, '');
+        //     newTaskRmTaskListOption.classList.add("taskrmproj"+trimProjectList);
+        //     newTaskRmTaskListOption.innerHTML = tskName.value;
+        //     taskRmTaskList.appendChild(newTaskRmTaskListOption);
 
-            // db variables
-            let projectName = projectList.value;
-            let taskName = tskName.value;
-            let date = taskDueDate.value;
+        //     // db variables
+        //     let projectName = projectList.value;
+        //     let taskName = tskName.value;
+        //     let date = taskDueDate.value;
 
-            fetch(`http://127.0.0.1:3260/addTask?project=${projectName}&name=${taskName}&due=${date}`, {
-                method: 'POST',
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response from server:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
+        //     fetch(`http://127.0.0.1:3260/addTask?project=${projectName}&name=${taskName}&due=${date}`, {
+        //         method: 'POST',
+        //     })
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         console.log('Response from server:', data);
+        //     })
+        //     .catch(error => {
+        //         console.error('Error:', error);
+        //     });
+        // }
 
-        function deleteProject() {
-            // Deletes the project chosen in the "Delete Project" popup
-            const removeButton = document.getElementById("button"+projectRemoveList.value);
-            const removeDiv = document.getElementById("div"+projectRemoveList.value);
+        // function deleteProject() {
+        //     // Deletes the project chosen in the "Delete Project" popup
+        //     const removeButton = document.getElementById("button"+projectRemoveList.value);
+        //     const removeDiv = document.getElementById("div"+projectRemoveList.value);
             
-            // db variables
-            let project = projectRemoveList.value;
+        //     // db variables
+        //     let project = projectRemoveList.value;
 
-            removeDiv.remove();
-            removeButton.remove();
-            // Removes the deleted project from the project lists in the "Add Task",
-            // "Delete Project", and "Delete Task" popups
-            const projListOption = document.getElementById("projlist"+projectRemoveList.value);
-            const projRmListOption = document.getElementById("rmList"+projectRemoveList.value);
-            const taskRmListOption = document.getElementById("taskrmprojlist"+projectRemoveList.value);
-            const selector = document.getElementById("taskRmTaskList");
-            let trimProjectRemoveList = projectRemoveList.value.replace(/\s/g, '');
-            var children = selector.children;
-            for (let i = 0; i < children.length; i++) {
-                const child = children[i];
-                if (child.classList.contains("taskrmproj"+trimProjectRemoveList)) {
-                    child.remove();
-                }
-            }
-            projListOption.remove();
-            projRmListOption.remove();
-            taskRmListOption.remove();
+        //     removeDiv.remove();
+        //     removeButton.remove();
+        //     // Removes the deleted project from the project lists in the "Add Task",
+        //     // "Delete Project", and "Delete Task" popups
+        //     const projListOption = document.getElementById("projlist"+projectRemoveList.value);
+        //     const projRmListOption = document.getElementById("rmList"+projectRemoveList.value);
+        //     const taskRmListOption = document.getElementById("taskrmprojlist"+projectRemoveList.value);
+        //     const selector = document.getElementById("taskRmTaskList");
+        //     let trimProjectRemoveList = projectRemoveList.value.replace(/\s/g, '');
+        //     var children = selector.children;
+        //     for (let i = 0; i < children.length; i++) {
+        //         const child = children[i];
+        //         if (child.classList.contains("taskrmproj"+trimProjectRemoveList)) {
+        //             child.remove();
+        //         }
+        //     }
+        //     projListOption.remove();
+        //     projRmListOption.remove();
+        //     taskRmListOption.remove();
 
-            fetch(`http://127.0.0.1:3260/removeProject?project=${project}`, {
-                method: 'DELETE',
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response from server:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
+        //     fetch(`http://127.0.0.1:3260/removeProject?project=${project}`, {
+        //         method: 'DELETE',
+        //     })
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         console.log('Response from server:', data);
+        //     })
+        //     .catch(error => {
+        //         console.error('Error:', error);
+        //     });
+        // }
 
-        function deleteTask() {
-            // Deletes the chosen task and removes it from the "Delete Task" popup
-            const taskToRemove = document.getElementById(taskRmProjectList.value+"list"+taskRmTaskList.value);
-            const rmFromTaskRmList = document.getElementById("taskrmtasklist"+taskRmTaskList.value);
+        // function deleteTask() {
+        //     // Deletes the chosen task and removes it from the "Delete Task" popup
+        //     const taskToRemove = document.getElementById(taskRmProjectList.value+"list"+taskRmTaskList.value);
+        //     const rmFromTaskRmList = document.getElementById("taskrmtasklist"+taskRmTaskList.value);
 
-            // db variables
-            let project = taskRmProjectList.value;
-            let task = taskRmTaskList.value;
+        //     // db variables
+        //     let project = taskRmProjectList.value;
+        //     let task = taskRmTaskList.value;
 
-            taskToRemove.remove();
-            rmFromTaskRmList.remove();
+        //     taskToRemove.remove();
+        //     rmFromTaskRmList.remove();
 
-            fetch(`http://127.0.0.1:3260/removeTask?project=${project}&task=${task}`, {
-                method: 'DELETE',
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Response from server:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
+        //     fetch(`http://127.0.0.1:3260/removeTask?project=${project}&task=${task}`, {
+        //         method: 'DELETE',
+        //     })
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         console.log('Response from server:', data);
+        //     })
+        //     .catch(error => {
+        //         console.error('Error:', error);
+        //     });
+        // }
 
         // Opens the "Create New Project" popup
         createProjectButton.addEventListener("click", function () { 
@@ -490,7 +490,8 @@
             let projName = document.getElementById("projectName");
             let checkProjectName = projName.value.trim();
             if (checkProjectName.length != 0 && !document.getElementById("button"+projName.value)) {
-                addProject();
+                addProject(projName.value);
+                render();
             }
             projName.value = "";
         });
@@ -503,18 +504,21 @@
             let menu = document.getElementById("menu"+projectList.value);
             let taskDueDate = document.getElementById("dueDate");
             if (checkTaskName.length != 0 && !document.getElementById(projectList.value+"list"+tskName.value) && taskDueDate.value != "") {
-                addTask();
+                addTask(projectList.value, tskName.value, taskDueDate.value);
+                render();
             }
             tskName.value = "";
         });
         // Deletes the chosen project and closes the "Delete Project" popup
         removeProject.addEventListener("click", function () {
             myRmProjectPopup.classList.remove("show");
-            deleteProject();
+            deleteProject(projectRemoveList.value);
+            render();
         });
         chooseTask.addEventListener("click", function () {
             myRmTaskTaskPopup.classList.remove("show");
-            deleteTask();
+            deleteTask(taskRmProjectList.value, taskRmTaskList.value);
+            render();
         });
         // Closes the current popup if you click anywhere else in the tab
         window.addEventListener("click", function (event) {
@@ -542,89 +546,74 @@
         // The rest of this script creates event listeners for each of the 
         // current collapsibles whenever the page is opened/refreshed.
 
-       
-        let getprojs = async ()=>{ 
-        let ret = await fetch('http://127.0.0.1:3260/projects')
-        let ret2 = await ret.json()
-        return ret2
-        };
         
-        
-
-        (async()=>
-        {let data = await getprojs();
-        console.log(data)
-
-        
-
-        var i;
-        for (i = 0; i < data.length; i++) {
-            let projectName = data[i].name;
-            const newButton = document.createElement("button");
-            newButton.setAttribute("type", "button");
-            newButton.classList.add("collapsible");
-            newButton.setAttribute("id", "button"+projectName);
-            newButton.innerHTML = projectName;
-            const newDiv = document.createElement("div");
-            newDiv.classList.add("content");
-            newDiv.setAttribute("id", "div"+projectName);
-            const newMenu = document.createElement("menu");
-            newMenu.setAttribute("id", "menu"+projectName);
-            newDiv.appendChild(newMenu);
-            collapsibleWrapper.appendChild(newButton);
-            collapsibleWrapper.appendChild(newDiv);
-            const projList = document.getElementById("projectList");
-            const projRmList = document.getElementById("projectRemoveList");
-            const taskRmProjectList = document.getElementById("taskRmProjectList");
-            const newProjListOption = document.createElement("option");
-            newProjListOption.setAttribute("value", projectName);
-            newProjListOption.setAttribute("id", "projlist"+projectName);
-            newProjListOption.innerHTML = projectName;
-            if (projectName === "Miscellaneous Tasks") {
-                const newProjRmListOption = document.createElement("option");
-                newProjRmListOption.setAttribute("value", projectName);
-                newProjRmListOption.setAttribute("id", "rmList"+projectName);
-                newProjRmListOption.innerHTML = projectName;
-                projRmList.appendChild(newProjRmListOption);
-            }
-            const newTaskRmProjListOption = document.createElement("option");
-            newTaskRmProjListOption.setAttribute("value", projectName);
-            newTaskRmProjListOption.setAttribute("id", "taskrmprojlist"+projectName);
-            newTaskRmProjListOption.innerHTML = projectName;
-            taskRmProjectList.appendChild(newTaskRmProjListOption);
-            projList.appendChild(newProjListOption);
-            for(let j = 0; j < data[i].tasks.length; j++) {
-                let taskName = data[i].tasks[j];
-                const projMenu = document.getElementById("menu"+projectName);
-                const newListElement = document.createElement("li");
-                newListElement.setAttribute("id", projectName+"list"+taskName.name);
-                newListElement.setAttribute("value", taskName.name);
-                newListElement.innerHTML = `<input type="checkbox"> `+ taskName.name + " (Due Date: " + taskName.due + ")";
-                projMenu.appendChild(newListElement);
-                const newTaskRmTaskListOption = document.createElement("option");
-                newTaskRmTaskListOption.setAttribute("value", taskName.name);
-                newTaskRmTaskListOption.setAttribute("id", "taskrmtasklist"+taskName.name);
-                newTaskRmTaskListOption.setAttribute("style", "display: none;");
-                let trimProjectList = projectName.replace(/\s/g, '');
-                newTaskRmTaskListOption.classList.add("taskrmproj"+trimProjectList);
-                newTaskRmTaskListOption.innerHTML = taskName.name;
-                taskRmTaskList.appendChild(newTaskRmTaskListOption);
-            }
-        }
-        const collapsibleWrapper = document.getElementById("collapsibles");
-        var coll = document.getElementsByClassName("collapsible");
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-            });
-        }
-    })()
+        // for (i = 0; i < data.length; i++) {
+        //     let projectName = data[i].name;
+        //     const newButton = document.createElement("button");
+        //     newButton.setAttribute("type", "button");
+        //     newButton.classList.add("collapsible");
+        //     newButton.setAttribute("id", "button"+projectName);
+        //     newButton.innerHTML = projectName;
+        //     const newDiv = document.createElement("div");
+        //     newDiv.classList.add("content");
+        //     newDiv.setAttribute("id", "div"+projectName);
+        //     const newMenu = document.createElement("menu");
+        //     newMenu.setAttribute("id", "menu"+projectName);
+        //     newDiv.appendChild(newMenu);
+        //     collapsibleWrapper.appendChild(newButton);
+        //     collapsibleWrapper.appendChild(newDiv);
+        //     const projList = document.getElementById("projectList");
+        //     const projRmList = document.getElementById("projectRemoveList");
+        //     const taskRmProjectList = document.getElementById("taskRmProjectList");
+        //     const newProjListOption = document.createElement("option");
+        //     newProjListOption.setAttribute("value", projectName);
+        //     newProjListOption.setAttribute("id", "projlist"+projectName);
+        //     newProjListOption.innerHTML = projectName;
+        //     if (projectName === "Miscellaneous Tasks") {
+        //         const newProjRmListOption = document.createElement("option");
+        //         newProjRmListOption.setAttribute("value", projectName);
+        //         newProjRmListOption.setAttribute("id", "rmList"+projectName);
+        //         newProjRmListOption.innerHTML = projectName;
+        //         projRmList.appendChild(newProjRmListOption);
+        //     }
+        //     const newTaskRmProjListOption = document.createElement("option");
+        //     newTaskRmProjListOption.setAttribute("value", projectName);
+        //     newTaskRmProjListOption.setAttribute("id", "taskrmprojlist"+projectName);
+        //     newTaskRmProjListOption.innerHTML = projectName;
+        //     taskRmProjectList.appendChild(newTaskRmProjListOption);
+        //     projList.appendChild(newProjListOption);
+        //     for(let j = 0; j < data[i].tasks.length; j++) {
+        //         let taskName = data[i].tasks[j];
+        //         const projMenu = document.getElementById("menu"+projectName);
+        //         const newListElement = document.createElement("li");
+        //         newListElement.setAttribute("id", projectName+"list"+taskName.name);
+        //         newListElement.setAttribute("value", taskName.name);
+        //         newListElement.innerHTML = `<input type="checkbox"> `+ taskName.name + " (Due Date: " + taskName.due + ")";
+        //         projMenu.appendChild(newListElement);
+        //         const newTaskRmTaskListOption = document.createElement("option");
+        //         newTaskRmTaskListOption.setAttribute("value", taskName.name);
+        //         newTaskRmTaskListOption.setAttribute("id", "taskrmtasklist"+taskName.name);
+        //         newTaskRmTaskListOption.setAttribute("style", "display: none;");
+        //         let trimProjectList = projectName.replace(/\s/g, '');
+        //         newTaskRmTaskListOption.classList.add("taskrmproj"+trimProjectList);
+        //         newTaskRmTaskListOption.innerHTML = taskName.name;
+        //         taskRmTaskList.appendChild(newTaskRmTaskListOption);
+        //     }
+        // }
+        // const collapsibleWrapper = document.getElementById("collapsibles");
+        // var coll = document.getElementsByClassName("collapsible");
+        // for (i = 0; i < coll.length; i++) {
+        //     coll[i].addEventListener("click", function() {
+        //         this.classList.toggle("active");
+        //         var content = this.nextElementSibling;
+        //         if (content.style.display === "block") {
+        //             content.style.display = "none";
+        //         } else {
+        //             content.style.display = "block";
+        //         }
+        //     });
+        // }
+        render();
     </script>
 
     <!-- Module JavaScript -->

@@ -1,5 +1,3 @@
-
-
 let addProject = async(name) => {
     await fetch(`http://127.0.0.1:3260/addProject?name=${name}`, {
         method:'POST'
