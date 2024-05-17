@@ -125,13 +125,13 @@ createTask.addEventListener("click", async function () {
     }
 });
 // Deletes the chosen project and closes the "Delete Project" popup
-removeProject.addEventListener("click", function () {
-    deleteProject(projectRemoveList.value);
-    render();
+removeProject.addEventListener("click", async function () {
+    await deleteProject(projectRemoveList.value);
+    await render();
 });
-chooseTask.addEventListener("click", function () {
-    deleteTask(taskRmProjectList.value, taskRmTaskList.value);
-    render();
+chooseTask.addEventListener("click", async function () {
+    await deleteTask(taskRmProjectList.value, taskRmTaskList.value);
+    await render();
 });
 
 render()
