@@ -44,6 +44,37 @@
     <!-- TODO - Silvana -->
 
     <div id="pomodoro" class="page" style="display: none;">
+        <br>
+        <div id="timer">
+            <div id="num_reps" class="timer_navbar">
+                <div class="timer_tab">
+                    <input type="text" id="timer_rounds" placeholder="Enter # of Work/Rest Rounds" style="width: 300px">
+                </div>
+            </div>
+            <span id="pomodoro_work" class="timer_navbar">
+                <div class="timer_tab">
+                    Work Timer
+                </div>
+                <span>
+                    <input type="text" id="work_minutes" placeholder="Enter Minutes">
+                    <input type="text" id="work_seconds" placeholder="Enter Seconds">
+                </span>
+                <div></div>
+            </span>
+            <span id="pomodoro_break" class="timer_navbar">
+                <div class="timer_tab">
+                    Rest Timer
+                </div>
+                <span>
+                    <input type="text" id="rest_minutes" placeholder="Enter Minutes">
+                    <input type="text" id="rest_seconds" placeholder="Enter Seconds">
+                </span>
+                <div></div>
+            </span>
+            <div id="pomodoro_begin" class="timer_navbar">
+                <button class="tab" id="start_timer">Start Timer</button>
+            </div>
+        </div>
         <div class="left_boxes" id="streaks_container" >
             <div><canvas id="myChart"></canvas></div>
         </div>
@@ -51,6 +82,7 @@
             <div id="calendar" ></div>
         </div>
     </div>
+
 
     <!-- TODO - Jacob -->
     <script type = 'module' src="farm.js"></script>
