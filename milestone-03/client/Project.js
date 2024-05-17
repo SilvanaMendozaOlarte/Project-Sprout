@@ -98,7 +98,8 @@ let render = async() => {
 }
 let createProject = document.getElementById("createProject");
 let createTask = document.getElementById("createTask");
-
+let removeProject = document.getElementById("removeProject");
+let chooseTask = document.getElementById("chooseTask");
 // Creates a new project, clears the text box in the "Create New Project" 
 // popup, and closes the popup
 createProject.addEventListener("click", function () {
