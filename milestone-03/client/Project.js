@@ -30,7 +30,6 @@ let getProjects = async() => {
 
 let render = async() => {
     let data = await getProjects();
-    console.log(data)
     let collapsibleWrapper = document.getElementById("collapsibles");
     collapsibleWrapper.innerHTML = "";
     for (var i = 0; i < data.length; i++) {
@@ -64,7 +63,7 @@ let render = async() => {
         newProjListOption.setAttribute("value", projectName);
         newProjListOption.setAttribute("id", "projlist"+projectName);
         newProjListOption.innerHTML = projectName;
-        if (projectName === "Miscellaneous Tasks") {
+        if (projectName != "Miscellaneous Tasks") {
             const newProjRmListOption = document.createElement("option");
             newProjRmListOption.setAttribute("value", projectName);
             newProjRmListOption.setAttribute("id", "rmList"+projectName);
@@ -97,5 +96,38 @@ let render = async() => {
         }
     }
 }
+let createProject = document.getElementById("createProject");
+let createTask = document.getElementById("createTask");
 
-render()
+// Creates a new project, clears the text box in the "Create New Project" 
+// popup, and closes the popup
+createProject.addEventListener("click", function () {
+    let projName = document.getElementById("projectName");
+    let checkProjectName = projName.value.trim();
+    if (checkProjectName.length != 0 && !document.getElementById("button"+projName.value)) {
+        addProject(projName.value);
+        render();
+    }
+    projName.value = "";
+});
+// Creates a new task, clears the text box in the "Create New Task" popup, 
+// and closes the popup
+createTask.addEventListener("click", function () {
+    let tskName = document.getElementById("taskName");
+    let checkTaskName = tskName.value.trim();
+    let taskDueDate = document.getElementById("dueDate");
+    if (checkTaskName.length != 0 && !document.getElementById(projectList.value+"list"+tskName.value) && taskDueDate.value != "") {
+        addTask(projectList.value, tskName.value, taskDueDate.value);
+        render();
+    }
+    tskName.value = "";
+});
+// Deletes the chosen project and closes the "Delete Project" popup
+removeProject.addEventListener("click", function () {
+    deleteProject(projectRemoveList.value);
+    render();
+});
+chooseTask.addEventListener("click", function () {
+    deleteTask(taskRmProjectList.value, taskRmTaskList.value);
+    render();
+});
