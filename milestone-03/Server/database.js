@@ -68,7 +68,7 @@ const Database = async (dbname) => {
       try{
         const db = getDB();
         const data = await db.get('projects')
-        data.projects.push({name,tasks:[]})
+        data.projects.push({name:name,tasks:[]})
         await db.put(data)
         await db.close()
         return {status: 'success'}
@@ -119,7 +119,7 @@ const Database = async (dbname) => {
           const data = await db.get('projects')
           const index = data.projects.map(e=> e.name).indexOf(project)
           const proj = data.projects[index]
-          proj.tasks.push({name,due})
+          proj.tasks.push({name:name,due:due})
           await db.put(data)
           await db.close()
           return {status: 'success'}
